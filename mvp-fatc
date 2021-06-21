@@ -1,0 +1,64 @@
+MVP List
+FauxTwitterClone, a Twitter clone, is a website for users to share brief thoughts, engage in light discussion, post memes, and spread propaganda.
+
+1. New account creation, log in, log out, and guest/demo login
+Users can sign up, log in, log out and browse.
+Users can't use certain features without logging in (create posts, like, comment).
+If not logged in while interacting with a feature, and message will pop recommending them to either log in or create an account.
+Logged in users are directed to the home page.
+Logged out users are directed to the login page.
+
+
+2. Hosting on Heroku
+
+
+3. Posts
+Logged in users can create posts.
+Logged in users can edit and delete their own posts.
+All users can view a sampling of the most recent posts.
+A post can include text, images, section for tags (Bonus: like)
+
+4. Comments
+Logged in users can create comments on posts.
+Logged in users can edit and delete their own comments.
+All users can view comments on posts.
+
+5. Search
+All users can see how many users have liked a post or comment.
+A user can search by tag.
+
+6. Tags / Topics
+Logged in users can add tags to their posts from a pre-defined list, or users can create their own tags.
+All users can click on tags to view a list of recent posts that contain that tag.
+
+7.
+
+7. Production README
+Brief explanation of what the app is and does.
+How to start development environment
+Technologies used
+Link to live site
+Link to Wiki docs
+Discussion of two features that show off the team's technical abilities
+Discussion of both challenges faced and the way the team solved them
+Code snippets to highlight the best code
+
+8. Bonus Features
+Display a list of recent commonly used tags.
+Users can search for other users to view all of their posts.
+Bonus / Likes
+
+
+ Pages 6
+
+	Home
+	API Documentation
+	Database Schema
+	Frontend Routes
+	MVP Feature List
+	User Stories
+Clone this wiki locally
+https://github.com/jborja-one/TheFastandtheCurious
+
+Scorecard
+https://docs.google.com/spreadsheets/d/1DpRwfNhh_EVJsor5Ck3PfWx-QeN4jODw/edit#gid=610474014
