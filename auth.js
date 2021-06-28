@@ -7,7 +7,33 @@ const loginUser = (req, res, user) => {
     }
 }
 
+const logoutUser = (req, res) => {
+    delete req.session.auth;
+}
+
+const restoreUser = async (req, res, next) => {
+    if(req.session.auth){
+        const {userId} = req.session.auth;
+
+        try{
+            const user = await db.User.findByPk(userId);
+
+            if(user){
+                res.locals.authenticated = true;
+                res.locals.user = user;
+                next()
+            }
+        } catch (error){
+            res.locals.authenticated = true;
+            next(error)
+        }
+    } else {
+        res.locals.authenticated = false;
+        next()
+    }
+};
+
 
 module.exports = {
-loginUser
+    loginUser, logoutUser, restoreUser
 }

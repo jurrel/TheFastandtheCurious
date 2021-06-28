@@ -1,0 +1,13 @@
+extends layout
+include utils
+
+block content
+  form(action='/users/login' method='post')
+    input(type='hidden' name='_csrf' value=csrfToken)
+    +field('User Name', 'userName', userName)
+    +field('Password', 'password', user.password, 'password')
+    div(class='py-4')
+      button(type='submit' class='btn btn-primary') Login
+      button(href='/' class='btn btn-warning ml-2') Cancel
+    div
+      p: a(href='/users/register') Register for a new Account.
