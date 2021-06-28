@@ -93,7 +93,6 @@ router.post('/create', csrfProtection, userValidators,
       fullName,
       userName,
       email
-
     })
 
     const validatorErrors = validationResult(req);
