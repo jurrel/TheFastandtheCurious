@@ -1,2 +1,15 @@
 extends layout
+include utils.pug 
 block content
+    form(action='/users/create' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        +field('Full Name', 'fullName', user.fullName)
+        +field('User Name', 'userName', user.userName)
+        +field('Email Address', 'emailAddress', user.email)
+        +field('Password', 'password', user.password, 'password')
+        +field('Confirm Password', 'confirmPassword', '', 'password')
+        div(class='py-4')
+            button(type='submit' class='btn btn-primary') Register
+            a(href='/' class='btn btn-warning ml-2') Cancel
+    div
+      p: a(href='/user/login') Already have an account?

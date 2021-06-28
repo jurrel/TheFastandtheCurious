@@ -1,9 +1,12 @@
 const express = require('express');
-const session = require('express-session');
+
 const { csrfProtection, asyncHandler } = require('./utils')
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs');
+
+const { User } = require('../db/models')
+const { loginUser } = require('../auth')
 
 const router = express.Router();
 
@@ -76,7 +79,7 @@ const userValidators = [
 ];
 
 
-router.post('/create', csrfProtection, userValidator,
+router.post('/create', csrfProtection, userValidators,
   asyncHandler(async (req, res, next) => {
     const {
       fullName,
@@ -85,12 +88,32 @@ router.post('/create', csrfProtection, userValidator,
       password
     } = req.body
 
-    const user = await db.User.build({
+    const user = db.User.build({
       fullName,
       userName,
-      email,
-      password
+      email
     })
+
+    const validatorErrors = validationResult(req);
+
+    if (!validatorErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      user.hashedPassword = hashedPassword;
+      await user.save();
+      loginUser(req, res, user);
+      res.redirect('/')
+
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      console.log(errors);
+      res.render('create-user', {
+        title: 'Register -- The Fast and the Curious -- ',
+        user,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
 
 
   }));
