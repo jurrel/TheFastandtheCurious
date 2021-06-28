@@ -89,7 +89,7 @@ router.post('/create', csrfProtection, userValidators,
       password
     } = req.body
 
-    const user = await db.User.build({
+    const user = db.User.build({
       fullName,
       userName,
       email
