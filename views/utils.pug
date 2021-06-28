@@ -1,0 +1,13 @@
+
+mixin validationErrorSummary(errors)
+   if errors
+    div(class='create-user-error' role='alert')
+        p You were too Fast and too Curious, you also got the following error(s):
+        ul
+          each error in errors
+            li= error
+
+mixin field(labelText, fieldName, fieldValue, fieldType = 'text')
+    div(class='form-group')
+      label(for=fieldName)= labelText
+      input(type=fieldType id=fieldName value=fieldValue class='form-control')
