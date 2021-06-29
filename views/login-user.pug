@@ -2,12 +2,25 @@ extends layout
 include utils
 
 block content
-  form(action='/users/login' method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('User Name', 'userName', userName)
-    +field('Password', 'password', user.password, 'password')
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary') Login
-      button(href='/' class='btn btn-warning ml-2') Cancel
-    div
-      p: a(href='/users/register') Register for a new Account.
+  +validationErrorSummary(errors)
+  div(class="login-container")
+    a(href='/' class='logo main-style') The Fast and the Curious
+    div(class='sign-up-form')
+      a(href='/users/create' class='form-buttons sign-up') Sign up with email
+      div(class='text-container')
+        p(class='sign-up-text') By continuing you indicate that you agree to Quora’s Terms of Service and Privacy Policy.
+    form(action='/users/login' method='post' class="fast-form")
+      div(class='form-logo') login
+      input(type='hidden' name='_csrf' value=csrfToken)
+      +field('User Name', 'userName', userName)
+      +field('Password', 'password', user.password, 'password')
+      div(class='login-buttons')
+        a(href='/' class='forgot-password') forgot password?
+        button(type='submit' class='login-button form-button') Login
+    div(class='test-class')
+      div(class='button1')
+        p: a(href='/users/') tag 1.
+      div(class='button1')
+        p: a(href='/users/') tag 2.
+      div(class='button1')
+        p: button(href='/users/') DEMO
