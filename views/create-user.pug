@@ -1,16 +1,39 @@
 extends layout
 include utils
 block content
-  +validationErrorSummary(errors)
-  form(action='/users/create' method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('Full Name', 'fullName', fullName)
-    +field('User Name', 'userName', userName)
-    +field('Email Address', 'email', email)
-    +field('Password', 'password', password, 'password')
-    +field('Confirm Password', 'confirmPassword', '', 'password')
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary') Register
-      a(href='/' class='btn btn-warning ml-2') Cancel
-  div
-    p: a(href='/user/login') Already have an account?
+block content
+  div(class='login-body')
+    div(class="login-container")
+      div(class='logo-container')
+        img(class='logo' src='http://nebula.wsimg.com/ee34e8fb3647a9f4eb497b1ce917b72a?AccessKeyId=58A00DE0FAC61CAFB374&disposition=0&alloworigin=1')
+        p A website about fast toys and how to surivive them!
+      div(class='login-header')
+        div(class='login-text') Login
+        form(action='/users/login' method='post' class="fast-form")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          label(for='userName') User Name
+          input(type='text' name="userName" class='fast-form form-control' placeholder='User Name')
+          label(for='password') Password
+          input(type='text' name="userName" class='fast-form form-control' placeholder='Password')
+          div(class='login-buttons')
+            a(href='/' class='forgot-password') Demo user
+            button(type='submit' class='login-button form-button') Login
+      div(class='sign-up-form')
+        div(class='login-text') Sign Up
+        form(action='/users/create' method='post' class='create-form')
+          input(type='hidden' name='_csrf' value=csrfToken)
+          label(for='fullName') Full Name
+          input(type='text' name='fullName' value=fullname placeholder='What unfortunate full name do you have?' class='form-control')
+          label(for='userName') User Name
+          input(type='text' name='userName' value=userName placeholder='What do you like to call yourself?' class='form-control')
+          label(for='email') Email Address
+          input(type='text' name='email' value=email placeholder='Where should we send spam to?' class='form-control')
+          label(for='password') Password
+          input(type='password' name='password' value=password placeholder='Password' class='form-control')
+          label(for='confirmPassword') Confirm Password
+          input(type='password' name='confirmPassword' placeholder='Confirm Password' class='form-control')
+          div(class='login-buttons')
+            button(type='submit' class='login-button form-button') Register
+            a(href='/' class='forgot-password login-button') Cancel
+      div(class='errors')
+        +validationErrorSummary(errors)

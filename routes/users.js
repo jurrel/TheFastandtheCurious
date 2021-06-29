@@ -27,52 +27,50 @@ router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
 const userValidators = [
   check('fullName')
     .exists({ checkFalsy: true })
-    .withMessage('Slow your roll, you need to put your name in')
+    .withMessage('Slow your roll, you need to put your full name in.')
     .isLength({ max: 100 })
-    .withMessage('Your name is too long'),
+    .withMessage('Your name is too long.'),
   check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('you gotta have a user name')
+    .withMessage('Pick a real user name, bum.')
     .isLength({ max: 50 })
-    .withMessage('Pick a shorter user name')
+    .withMessage('No Fast username is that long - pick a shorter user name.')
     .custom((value) => {
       return db.User.findOne({ where: { userName: value } })
         .then((user) => {
           if (user) {
-            return Promise.reject('That user name already exists. Vroom Vroom')
+            return Promise.reject('Don\'t be a copy cat, that username is being used.')
           }
         })
     }),
   check('email')
     .exists({ checkFalsy: true })
-    .withMessage('you need an email')
+    .withMessage('You need a valid email address.')
     .isLength({ max: 255 })
-    .withMessage('give us a shorter email')
+    .withMessage('Your email is too long. Use a better email!')
     .isEmail()
     .withMessage('Can\'t fool us with that fughazi email. Give us a real one')
     .custom((value) => {
       return db.User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
-            return Promise.reject('That email already exists. Vroom Vroom')
+            return Promise.reject('Identity theft is breaking the law. That email already exists!')
           }
         })
     }),
   check('password')
     .exists({ checkFalsy: true })
-    .withMessage('you need a password')
+    .withMessage('Use a valid safe password!')
     .isLength({ max: 50 })
-    .withMessage('your password is far too long')
+    .withMessage('You won\'t remember a password that long. Choose another password.')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
-    .withMessage('Your password must include at least 1 lowecase letter, 1 uppercase letter, 1 number, and 1 special character (i.e. "!@#$%^&*")'),
+    .withMessage('Your password must include at least 1 lowecase letter, 1 uppercase letter, 1 number, and 1 special character (i.e. "!@#$%^&*").'),
   check('confirmPassword')
     .exists({ checkFalsy: true })
-    .withMessage('you need to confirm your password')
-    .isLength({ max: 50 })
-    .withMessage('your password confirmation is too long')
+    .withMessage('You need to confirm your password.')
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error('Your confirm password does not match your original password, come on now')
+        throw new Error('Your passwords need to match, come on now!')
       }
       return true
     })
