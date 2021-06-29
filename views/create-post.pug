@@ -1,5 +1,16 @@
-//- extends layout
-
-//- block content
-//-     form(action='posts/create' method='post')
-//-       +field('Title' 'title' title)
+extends layout
+include utils
+block content
+  form(action='/posts/create' method='post')
+      +field('Title', 'title', title)
+      +field('Description', 'description', description)
+      +field('Image', 'image', image)
+      +field('User Id', 'userId', userId)
+      select(name='tags' required)
+        each tag in tags
+          option(value=tag.id)= tag.name
+      div(class='py-4')
+        button(type='submit' class='btn btn-primary') Register
+        a(href='/hello' class='btn btn-warning ml-2') Cancel
+  div
+    p: a(href='/user/login') Already have an account?

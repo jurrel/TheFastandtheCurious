@@ -17,9 +17,11 @@ module.exports = {
         type: Sequelize.TEXT
       },
       image: {
+        defaultValue: null,
         type: Sequelize.TEXT
       },
       postLikes: {
+        defaultValue: 0,
         type: Sequelize.INTEGER
       },
       userId: {
