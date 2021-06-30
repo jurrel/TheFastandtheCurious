@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   Tag.associate = function (models) {
     // associations can be defined here
 
-    // Tag.hasMany(models.Post, { foreignKey: 'postId' });
+
 
     // const columnMapping = {
     //   through: 'ManyTag',
@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     // }
 
     // Tag.belongsToMany(models.Post, columnMapping);
+    Tag.hasMany(models.ManyTag, {
+      as: 'posts',
+      foreignKey: 'tagId'
+    });
+
 
   };
   return Tag;

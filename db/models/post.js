@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
 
     // Post.belongsToMany(models.Tag, columnMapping);
 
+      Post.hasMany(models.ManyTag, {
+        as: 'tags',
+        foreignKey: 'postId'
+      });
   };
   return Post;
 };
