@@ -44,11 +44,19 @@
 
 .sign-up-form {
     grid-area: g2-1;
+    display: block;
+    padding: 15px;
+
+}
+
+.login-form {
+    grid-area: g2-1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px;
+
 }
 
 .form-buttons {
