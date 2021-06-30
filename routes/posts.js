@@ -55,7 +55,7 @@ router.post('/create', postValidators,
             userId: res.locals.user.id
         });
 
-        return res.redirect('/posts/create')
+        return res.redirect('/')
 
     }));
 
