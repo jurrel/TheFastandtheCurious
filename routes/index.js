@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
   const posts = await Post.findAll();
   // console.log('helloooooooooooooooo');
-  res.render('index', { title: 'The Fast and the Curious  --  A webpage designed for speed freaks!', user });
+  res.render('index', { title: 'The Fast and the Curious  --  A webpage designed for speed freaks!', user, posts });
 
 }));
 

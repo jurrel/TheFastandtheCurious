@@ -8,4 +8,6 @@ include utils
 block content
     h1= title
     p Welcome to your Project Skeleton
-    
+      ul
+        each post in posts
+          li= post.title 
