@@ -12,7 +12,7 @@ block content
         form(action='/users/login' method='post' class="fast-form")
           input(type='hidden' name='_csrf' value=csrfToken)
           label(for='userName') User Name
-          input(type='text' name="userName" class='fast-form form-control' placeholder='User Name')
+          input(type='text' name="userName" value=user.userName class='fast-form form-control' placeholder='User Name')
           label(for='password') Password
           input(type='text' name="userName" class='fast-form form-control' placeholder='Password')
           div(class='login-buttons')
@@ -23,11 +23,11 @@ block content
         form(action='/users/create' method='post' class='create-form')
           input(type='hidden' name='_csrf' value=csrfToken)
           label(for='fullName') Full Name
-          input(type='text' name='fullName' value=fullname placeholder='What unfortunate full name do you have?' class='form-control')
+          input(type='text' name='fullName' value=user.fullName placeholder='What unfortunate full name do you have?' class='form-control')
           label(for='userName') User Name
-          input(type='text' name='userName' value=userName placeholder='What do you like to call yourself?' class='form-control')
+          input(type='text' name='userName' value=user.userName placeholder='What do you like to call yourself?' class='form-control')
           label(for='email') Email Address
-          input(type='text' name='email' value=email placeholder='Where should we send spam to?' class='form-control')
+          input(type='text' name='email' value=user.email placeholder='Where should we send spam to?' class='form-control')
           label(for='password') Password
           input(type='password' name='password' value=password placeholder='Password' class='form-control')
           label(for='confirmPassword') Confirm Password
