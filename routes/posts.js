@@ -16,14 +16,14 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 
-// router.get('/create', requireAuth,csrfProtection,
-//     asyncHandler(async (req, res) => {
-//         const post = Post.build()
-//         const newTag = Tag.build();
-//         const tagList = await Tag.findAll();
+router.get('/create', requireAuth,csrfProtection,
+    asyncHandler(async (req, res) => {
+        const post = Post.build()
+        const newTag = Tag.build();
+        const tagList = await Tag.findAll();
 
-//     res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
-// }));
+    res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
+}));
 
 const postValidators = [
     check('title')
