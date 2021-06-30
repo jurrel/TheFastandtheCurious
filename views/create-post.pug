@@ -2,12 +2,13 @@ extends layout
 include utils
 block content
   form(action='/posts/create' method='post')
+      input(type='hidden' name='_csrf' value=csrfToken)
       +field('Title', 'title', title)
       +field('Description', 'description', description)
       +field('Image', 'image', image)
-      +field('User Id', 'userId', userId)
-      select(name='tags' required)
-        each tag in tags
+      +field('New tag', 'name', name)
+      select(name='tagList' required)
+        each tag in tagList
           option(value=tag.id)= tag.name
       div(class='py-4')
         button(type='submit' class='btn btn-primary') Register

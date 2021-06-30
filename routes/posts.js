@@ -5,14 +5,16 @@ const { Post } = db;
 const { Tag } = db;
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
+const { requireAuth } = require('../auth');
 
 
+router.get('/create', requireAuth,csrfProtection,
+    asyncHandler(async (req, res) => {
+        const post = Post.build
+        const newTag = Tag.build;
+    const tagList = await Tag.findAll();
 
-router.get('/create', asyncHandler(async (req, res) => {
-    const post = db.Post.build
-    const tags = await Tag.findAll();
-
-    res.render('create-post', { post, tags });
+    res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
 }));
 
 const postValidators = [
@@ -37,42 +39,21 @@ const postValidators = [
 
 router.post('/create', postValidators,
     asyncHandler(async (req, res, next) => {
-        let {
+        const {
             title,
             description,
             image,
-            userId
         } = req.body;
 
-        userId = Number(userId);
-        console.log({ title, description, image, userId });
+
+
 
         const post = await Post.create({
             title,
             description,
             image,
-            userId
+            userId: res.locals.user.id
         });
-
-
-    //     const post = Post.build({
-    //         title,
-    //         description,
-    //         image,
-    //         userId,
-    //     });
-    //     console.log(title);
-    //     // const validatorErrors = validationResult(req);
-
-    //     // if (validatorErrors.isEmpty()) {
-    //     //     await
-    //     // };
-
-
-
-    //    // console.log(title);
-
-    //     await post.save();
 
         return res.redirect('/posts/create')
 
