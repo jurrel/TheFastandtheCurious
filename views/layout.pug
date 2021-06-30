@@ -4,11 +4,22 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
-        link(rel='stylesheet' href='/stylesheets/login.css')
-        link(rel='stylesheet' href='/stylesheets/signup.css')
         link(rel="preconnect" href="https://fonts.googleapis.com")
   body(class='body')
-    nav(class='navbar navbar-expand-lg navbar-dark bg-primary')
-      .container
-        h2(class='py-4')
-        block content
+    div(class="nav-bar")
+      a(href='/')
+        img(class='nav-links' src='http://nebula.wsimg.com/ee34e8fb3647a9f4eb497b1ce917b72a?AccessKeyId=58A00DE0FAC61CAFB374&disposition=0&alloworigin=1')
+      a(href="/" class='nav-links')
+        img(class='nav-links' src='https://image.flaticon.com/icons/png/512/171/171532.png' )
+      a(href="/users" class='nav-links')
+        img(class='nav-links' src='https://image.flaticon.com/icons/png/512/171/171561.png' )
+      a(href="" class='nav-links')
+        img(class='nav-links' src='https://image.flaticon.com/icons/png/512/171/171557.png' )
+      input(type="text" placeholder=' 🔍   Search the Fast servers...' class='search-bar')
+      a(href="" class='nav-links')
+        img(class='nav-links' src='https://image.flaticon.com/icons/png/512/171/171566.png' )
+      a(href="/users/logout" class='nav-links')
+        img(class='nav-links' src='https://previews.123rf.com/images/glopphy/glopphy1602/glopphy160200010/52091227-earth-icon-logo-vector-image-globe-illustration.jpg' )
+      button(class='question-button') Summon Guru
+    div(class='index-body')
+    block content

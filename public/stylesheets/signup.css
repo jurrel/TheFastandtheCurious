@@ -1,3 +1,9 @@
 .signup-form {
     width: 600px;
 }
+
+.sign-up-form {
+    grid-area: g2-1;
+    display: block;
+    padding: 15px;
+}
