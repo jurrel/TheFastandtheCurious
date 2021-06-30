@@ -7,15 +7,23 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
-router.get('/create', requireAuth,csrfProtection,
-    asyncHandler(async (req, res) => {
-        const post = Post.build
-        const newTag = Tag.build;
-    const tagList = await Tag.findAll();
+    // const posts = await db.Post.build()
 
-    res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
-}));
+    // console.log(posts)
+    // res.render('index', {csrfToken: req.csrfToken(), posts})
+}))
+
+
+// router.get('/create', requireAuth,csrfProtection,
+//     asyncHandler(async (req, res) => {
+//         const post = Post.build()
+//         const newTag = Tag.build();
+//         const tagList = await Tag.findAll();
+
+//     res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
+// }));
 
 const postValidators = [
     check('title')
@@ -69,7 +77,7 @@ router.post('/create', csrfProtection, postValidators,
             const errors = validatorErrors.array().map((error) => error.msg);
             const tagList = await Tag.findAll();
             res.render('create-post', {
-    
+
                 post,
                 errors,
                 tagList,

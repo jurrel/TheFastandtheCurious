@@ -1,0 +1,52 @@
+.post-container {
+    width: 80%;
+    display: block;
+}
+
+.main-container {
+    display: flex;
+}
+
+.tags-container {
+    width: 20%;
+}
+
+.post-grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    background-color: rgb(250, 250, 250);
+}
+
+.post-poster {
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid black;
+    width: 100%;
+    height: 40px;
+
+    padding: 20px
+}
+
+.postsss {
+    display: block;
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    height: auto;
+}
+
+.post-image-file {
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-description {
+    height: auto;
+
+}
