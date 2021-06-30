@@ -9,21 +9,22 @@ const { requireAuth } = require('../auth');
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
-    // const posts = await db.Post.build()
+    const posts = await db.Post.findAll({})
+    const tags = await Tag.findAll();
 
-    // console.log(posts)
-    // res.render('index', {csrfToken: req.csrfToken(), posts})
+    console.log(tags)
+    res.render('index', {csrfToken: req.csrfToken(), posts, tags})
 }))
 
 
-// router.get('/create', requireAuth,csrfProtection,
-//     asyncHandler(async (req, res) => {
-//         const post = Post.build()
-//         const newTag = Tag.build();
-//         const tagList = await Tag.findAll();
+router.get('/create', requireAuth,csrfProtection,
+    asyncHandler(async (req, res) => {
+        const posts = Post.build()
+        const newTag = Tag.build();
+        const tagList = await Tag.findAll();
 
-//     res.render('create-post', { post, tagList, newTag, csrfToken: req.csrfToken() });
-// }));
+    res.render('create-post', { posts, tagList, newTag, csrfToken: req.csrfToken() });
+}));
 
 const postValidators = [
     check('title')
@@ -61,7 +62,7 @@ router.post('/create', csrfProtection, postValidators,
 
         if (validatorErrors.isEmpty()) {
 
-            post = await Post.create({
+            const posts = await Post.create({
                 title,
                 description,
                 image,
@@ -71,7 +72,7 @@ router.post('/create', csrfProtection, postValidators,
 
             console.log(validatorErrors);
 
-            return res.redirect('/posts/create')
+            return res.redirect('/', {posts})
         } else {
             console.log('hello')
             const errors = validatorErrors.array().map((error) => error.msg);

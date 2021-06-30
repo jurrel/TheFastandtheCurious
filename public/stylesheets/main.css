@@ -1,6 +1,7 @@
 .post-container {
-    width: 80%;
+    width: 100%;
     display: block;
+    margin: 7px 0;
 }
 
 .main-container {
@@ -8,29 +9,24 @@
 }
 
 .tags-container {
-    width: 20%;
+    width: 100%;
 }
 
 .post-grid-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
-    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(220, 220, 220);
+    background-color: rgb(255, 255, 255);
 }
 
 .post-poster {
     display: flex;
     justify-content: flex-start;
-    border: 1px solid black;
+    border: 0.5px solid rgb(242, 240, 240);
     width: 100%;
     height: 40px;
-
     padding: 20px
-}
-
-.postsss {
-    display: block;
 }
 
 .post-image {
@@ -48,5 +44,36 @@
 
 .post-description {
     height: auto;
+}
 
+.tags-tags {
+    display: block;
+    margin-top: 20px;
+}
+
+.tags-link {
+    display: block;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.tags-links:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 14px;
+    margin: 10px;
+}
+
+.timer-img {
+    width: auto;
+    height: 12px;
+    display: block;
+}
+
+.tags-links {
+    display: flex;
+    align-items: center;
 }

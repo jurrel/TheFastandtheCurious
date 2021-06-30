@@ -9,13 +9,13 @@ include utils
 block content
   div(class='main-container')
     div(class='tags-container')
-      h2 tags category
-        ul
-          li list
-          li list
-          li list
-          li list
-    div(class='postsss')
+      h2 Categories:
+        ul(class='tags-tags')
+          each tag in tags
+            div(class='tags-links')
+              img(src='https://image.flaticon.com/icons/png/512/4285/4285622.png' class='timer-img')
+              a(href=`${tag.name}` class='tags-link')= tag.name
+    div(class='')
       div(class='post-container')
         div(class='post-grid-container')
           div(class='post-poster post-username')
@@ -27,14 +27,15 @@ block content
           div(class='post-buttons post-poster')
             button(class='post-like') like
             button(class='post-comment') comment
-      div(class='post-container')
-        div(class='post-grid-container')
-          div(class='post-poster post-username')
-            div() user image
-            div() unsername
-          div(class='post-description post-poster') Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore officiis voluptate ullam aspernatur omnis placeat ea. Voluptatem ullam, dolor a ratione, ea nostrum eveniet, molestias saepe rerum in nemo consectetur!
-          div(class='post-image post-poster')
-            img(class='post-image-file' src='https://www.speednik.com/wp-content/blogs.dir/1/files/2018/01/scientists-find-a-key-to-happiness-is-driving-a-fast-car-0001.jpg')
-          div(class='post-buttons post-poster')
-            button(class='post-like') like
-            button(class='post-comment') comment
+      each post in posts
+        div(class='post-container')
+          div(class='post-grid-container')
+            div(class='post-poster post-username')
+              div() user image
+              div()= post.userId
+            div(class='post-description post-poster')= post.description
+            div(class='post-image post-poster')
+              img(src=post.image class='post-image-file' )
+            div(class='post-buttons post-poster')
+              button(class='post-like') like
+              button(class='post-comment') comment

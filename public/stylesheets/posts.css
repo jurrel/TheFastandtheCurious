@@ -92,6 +92,7 @@
 .posts-container {
     display: flex;
     justify-content: center;
+
 }
 
 .post-label {
