@@ -1,13 +1,26 @@
-extends layout
 include utils
-
-block content
-  form(action='/users/login' method='post')
-    input(type='hidden' name='_csrf' value=csrfToken)
-    +field('User Name', 'userName', userName)
-    +field('Password', 'password', user.password, 'password')
-    div(class='py-4')
-      button(type='submit' class='btn btn-primary') Login
-      button(href='/' class='btn btn-warning ml-2') Cancel
-    div
-      p: a(href='/users/register') Register for a new Account.
+append head
+  link(rel='stylesheet' href='/stylesheets/login.css')
+body
+  div(class='login-body')
+    div(class="login-container")
+      div(class='logo-container')
+        img(class='logo' src='http://nebula.wsimg.com/ee34e8fb3647a9f4eb497b1ce917b72a?AccessKeyId=58A00DE0FAC61CAFB374&disposition=0&alloworigin=1')
+        p A website about fast toys and how to surivive them!
+      div(class='login-form')
+        a(href='/users/create' class='form-buttons sign-up') Sign up with email
+        div(class='text-container')
+          p(class='sign-up-text') By continuing you indicate that you agree to Quora’s Terms of Service and Privacy Policy.
+      div(class='login-header')
+        div(class='login-text') Login
+        form(action='/users/login' method='post' class="fast-form")
+          input(type='hidden' name='_csrf' value=csrfToken)
+          label(for='userName') User Name
+          input(type='text' name="userName" class='fast-form form-control' placeholder='User Name')
+          label(for='password') Password
+          input(type='password' name="password" class='fast-form form-control' placeholder='Password')
+          div(class='login-buttons')
+            a(href='/' class='forgot-password') Demo user
+            button(type='submit' class='login-button form-button') Login
+      div(class='errors')
+        +validationErrorSummary(errors)

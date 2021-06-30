@@ -1,0 +1,157 @@
+.login-body {
+    background: rgb(131, 59, 36);
+    background: url('https://images.squarespace-cdn.com/content/v1/5601b862e4b07f880ad7d1fd/1532678606115-O83EBGSQU0VNQ2N3PQVT/fast_and_curious_web.jpg?format=2500w');
+    background-size: cover;
+    height: 1000px;
+    margin-top: -80px;
+    width: auto;
+}
+
+.logo-img {
+    width: 150px;
+    display: flex;
+    justify-items: center;
+}
+
+.login-container {
+    position: relative;
+    top: 100px;
+    background-color: white;
+    width: 800px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 2.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'g1-1 g1-1' 'g2-1 g2-2' 'g2-1 g2-2' 'g3-1 g3-1';
+    border-radius: 15px;
+}
+
+.logo-container {
+    display: block;
+    margin: 0 auto;
+    grid-area: g1-1;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.login-form {
+    grid-area: g2-1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    padding: 10px;
+    border-radius: 2.5px;
+    border: 1px solid lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    justify-content: left;
+    margin: 5px;
+}
+
+.form-buttons:hover {
+    background-color: lightgrey;
+}
+
+.sign-up {
+    justify-content: center;
+    font-size: smaller;
+    border: none
+}
+
+.fast-form {
+    grid-area: g2-2;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.form-control {
+    width: 100%;
+    margin: 10px;
+    padding: 12px 30px;
+}
+
+.form-button {
+    padding: 5px;
+    width: 100px;
+    border-radius: 20px;
+}
+
+.forgot-password {
+    padding: 20px;
+    font-size: smaller;
+    color: grey;
+    text-decoration: none;
+}
+
+.login-header {
+    grid-area: g2-2;
+    margin: 15px;
+    padding: 10px;
+}
+
+.login-text {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.errors {
+    grid-area: g3-1;
+
+}
+
+.errors-title {
+    font-size: x-large;
+}
+
+.errors-container {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: pink;
+    color: darkred;
+    padding: 20px 60px;
+    font-weight: bolder;
+    width: 700px;
+}
+
+.sign-up-text {
+    font-size: smaller;
+}
+
+.text-container {
+    color: gray;
+    width: 80%;
+    font-size: 15.5px;
+    align-items: center;
+    border-top: 1px solid lightgrey;
+}
+
+.form-user-buttons {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.login-buttons {
+    display: inline;
+    margin: 0 auto;
+}
