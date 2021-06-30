@@ -11,7 +11,7 @@ block content
         each tag in tagList
           option(value=tag.id)= tag.name
       div(class='py-4')
-        button(type='submit' class='btn btn-primary') Register
+        button(type='submit' class='btn btn-primary') Post
         a(href='/hello' class='btn btn-warning ml-2') Cancel
   div
-    p: a(href='/user/login') Already have an account?
+     +validationErrorSummary(errors)

@@ -31,13 +31,10 @@ const postValidators = [
     check('image')
         .isLength({ max: 500 })
         .withMessage('Your pic URL is too long'),
-    check('userId')
-        .exists({ checkFalsy: true })
-        .withMessage('you need a user id')
 
 ];
 
-router.post('/create', postValidators,
+router.post('/create', csrfProtection, postValidators,
     asyncHandler(async (req, res, next) => {
         const {
             title,
@@ -45,17 +42,40 @@ router.post('/create', postValidators,
             image,
         } = req.body;
 
-
-
-
-        const post = await Post.create({
+        let post = Post.build({
             title,
             description,
             image,
             userId: res.locals.user.id
         });
+        const validatorErrors = validationResult(req);
+        console.log(validatorErrors.isEmpty());
 
-        return res.redirect('/posts/create')
+        if (validatorErrors.isEmpty()) {
+
+            post = await Post.create({
+                title,
+                description,
+                image,
+                userId: res.locals.user.id
+            });
+
+
+            console.log(validatorErrors);
+
+            return res.redirect('/posts/create')
+        } else {
+            console.log('hello')
+            const errors = validatorErrors.array().map((error) => error.msg);
+            const tagList = await Tag.findAll();
+            res.render('create-post', {
+    
+                post,
+                errors,
+                tagList,
+                csrfToken: req.csrfToken(),
+            })
+        }
 
     }));
 
