@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
 const tagsRouter = require('./routes/tags');
+const cors = require('cors');
 const { restoreUser } = require('./auth');
 
 const app = express();
@@ -37,6 +38,9 @@ app.use(
 
 // create Session table if it doesn't already exist
 store.sync();
+
+
+app.use(cors({ origin: 'http://localhost:8080'}))
 
 app.use(restoreUser)
 app.use('/', indexRouter);
