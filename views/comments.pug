@@ -1,0 +1,31 @@
+extends layout
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/main.css")
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+include utils
+block content
+      div(class='this-post')
+      each post in posts
+        div(class='post-container')
+          div(class='post-grid-container')
+            div(class='post-user-container')
+              form(class='delete-post' action=`posts/delete/${post.id}` method='post')
+                button(class='delete-this-post' role='button') X
+              each user in users
+                if user.id === post.userId
+                  div(class='users-contained')
+                    img(class='post-user-image' src= user.image)
+                    div(class='user-info-container')
+                      div(class='post-username')= user.userName
+                      div(class='post-user-tag')= user.tag
+                    div(class='post-user-email')= user.email
+                    div(class='post-timer')= `posted ${Math.ceil((new Date() - post.createdAt)/60000)} minute(s) ago`
+            div(class='post-title-contain')
+              div(class='post-title')= post.title
+            div(class='post-description post-poster')= post.description
+            div(class='post-image post-image-poster')
+              img(src=post.image class='post-image-file' )
