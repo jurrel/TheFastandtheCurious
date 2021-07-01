@@ -13,25 +13,26 @@ const router = express.Router();
 
 
 /* GET users listing. */
-router.get('/', async (req, res, next) => {
+router.get('/:id(\\d+)', async (req, res, next) => {
   const user = await db.User.findByPk(res.locals.user.id)
-  console.log(user)
-
   res.render('home-user', {user})
+});
+
+router.get('/all', async (req, res, next) => {
+  const users = await db.User.findAll()
+  res.render('all-user', {users})
 });
 
 router.post('/update/:id(\\d+)', asyncHandler(async (req, res) => {
   const userId = parseInt(req.params.id, 10);
-
   const userUpdate = await db.User.findByPk(userId);
 
-  // const { tag } = req.body
-  console.log(userUpdate.user)
-  // const tags = {tag}
+  const { tag } = req.body
 
-  // await userUpdate.update(tags)
-  // res.redirect('/');
+  const thisTag = {tag}
+  await userUpdate.update(thisTag)
 
+  res.redirect('/');
 
 }));
 

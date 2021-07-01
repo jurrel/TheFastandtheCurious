@@ -7,7 +7,7 @@ const { requireAuth } = require('../auth');
 
 router.get('/create', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
-        const posts = db.Post.build()
+        const posts = await db.Post.build()
         const newTag = db.Tag.build();
         const tagList = await db.Tag.findAll();
 
