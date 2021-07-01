@@ -1,5 +1,5 @@
-const router = express.Router();
 const express = require('express');
+const router = express.Router();
 const db = require('../db/models');
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
@@ -85,6 +85,55 @@ router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
 
 }));
+
+
+router.get('/edit/:id(\\d+)', csrfProtection,
+  asyncHandler(async (req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const post = await db.Post.findByPk(postId);
+    res.render('post-edit', {
+      title: 'Edit meee',
+      post,
+      csrfToken: req.csrfToken(),
+    });
+  }));
+
+router.post('/edit/:id(\\d+)', csrfProtection, postValidators,
+  asyncHandler(async (req, res) => {
+    const postId = parseInt(req.params.id, 10);
+    const postUpdate = await db.Post.findByPk(postId);
+
+    const {
+      title,
+      author,
+      releaseDate,
+      pageCount,
+      publisher,
+    } = req.body;
+
+    const book = {
+      title,
+      author,
+      releaseDate,
+      pageCount,
+      publisher,
+    };
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      await postUpdate.update(post);
+      res.redirect('/');
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render('post-edit', {
+        title: 'Edit Me',
+        post: { ...post, id: postId },
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+  }));
 
 
 
