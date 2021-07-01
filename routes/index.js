@@ -1,16 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
-<<<<<<< HEAD
-
-const { asyncHandler, csrfProtection } = require('./utils');
-=======
 const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require('./utils');
 const { requireAuth } = require('../auth');
 
 
->>>>>>> comments
 
 /* GET home page. */
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
