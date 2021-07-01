@@ -31,7 +31,7 @@ block content
                       div(class='post-username')= user.userName
                       div(class='post-user-tag')= user.tag
                     div(class='post-user-email')= user.email
-                    div(class='post-timer')= `posted ${Math.ceil((new Date() - post.createdAt)/60000)} minute(s) ago`
+                    div(class='post-timer')= `posted ${Math.ceil((new Date() - post.updatedAt)/60000)} minute(s) ago`
             div(class='post-title-contain')
               div(class='post-title')= post.title
             div(class='post-description post-poster')= post.description
@@ -41,6 +41,7 @@ block content
               a(type='button')
                 img(class='like-button' src="https://image.pngaaa.com/118/177118-middle.png")
               a(type='button')
+              a(type='button')= post.postLikes
                 img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0B_sGAQyQb0wxKtnHYi_xPQuQ5Six-GF3Q&usqp=CAU")
               a(type='button' href=`/posts/edit/${post.id}`)
-                img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0B_sGAQyQb0wxKtnHYi_xPQuQ5Six-GF3Q&usqp=CAU")
+                img(class='like-button' src="https://www.pngrepo.com/png/240150/512/edit-pencil.png")

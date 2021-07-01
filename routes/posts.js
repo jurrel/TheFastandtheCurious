@@ -64,15 +64,6 @@ router.post('/create', requireAuth, csrfProtection, postValidators,
 
     }));
 
-// router.get('/delete/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-//   const postId = parseInt(req.params.id, 10);
-//   const post = await db.Post.findByPk(postId);
-//   res.render('book-delete', {
-//     title: 'Delete Book',
-//     post,
-//     csrfToken: req.csrfToken(),
-//   });
-// }));
 
 router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   const postId = parseInt(req.params.id, 10);
@@ -91,11 +82,15 @@ router.get('/edit/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
     const postId = parseInt(req.params.id, 10);
     const post = await db.Post.findByPk(postId);
-    res.render('post-edit', {
-      title: 'Edit meee',
-      post,
-      csrfToken: req.csrfToken(),
-    });
+
+    if (res.locals.user.id === post.userId) {
+        res.render('post-edit', {
+          title: 'Edit meee',
+          post,
+          csrfToken: req.csrfToken(),
+        });
+
+    }
   }));
 
 
@@ -106,32 +101,23 @@ router.post('/edit/:id(\\d+)', csrfProtection,
     const postId = parseInt(req.params.id, 10);
     const postUpdate = await db.Post.findByPk(postId);
 
+    console.log(req.body)
+
     const {
+        id,
         title,
         description,
 
     } = req.body;
 
     const post = {
+        id,
         title,
         description,
 
     };
-
-    const validatorErrors = validationResult(req);
-
-    if (validatorErrors.isEmpty()) {
-      await postUpdate.update(post);
-      res.redirect('/');
-    } else {
-      const errors = validatorErrors.array().map((error) => error.msg);
-      res.render('post-edit', {
-        title: 'Edit Me',
-        post: { ...post, id: postId },
-        errors,
-        csrfToken: req.csrfToken(),
-      });
-    }
+        await postUpdate.update(post);
+        res.redirect('/');
   }));
 
 
