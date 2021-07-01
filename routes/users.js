@@ -4,6 +4,7 @@ const { csrfProtection, asyncHandler } = require('./utils')
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs');
+const { requireAuth } = require('../auth')
 
 // const { User } = require('../db/models')
 const { loginUser, logoutUser } = require('../auth')
@@ -11,12 +12,29 @@ const { loginUser, logoutUser } = require('../auth')
 const router = express.Router();
 
 
-
-
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
+router.get('/:id(\\d+)', async (req, res, next) => {
+  const user = await db.User.findByPk(res.locals.user.id)
+  res.render('home-user', {user})
 });
+
+router.get('/all', async (req, res, next) => {
+  const users = await db.User.findAll()
+  res.render('all-user', {users})
+});
+
+router.post('/update/:id(\\d+)', asyncHandler(async (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const userUpdate = await db.User.findByPk(userId);
+
+  const { tag } = req.body
+
+  const thisTag = {tag}
+  await userUpdate.update(thisTag)
+
+  res.redirect('/');
+
+}));
 
 router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
   const user = db.User.build();
@@ -84,13 +102,17 @@ router.post('/create', csrfProtection, userValidators,
       fullName,
       userName,
       email,
-      password
+      password,
+      image,
+      tag
     } = req.body
 
     const user = db.User.build({
       fullName,
       userName,
-      email
+      email,
+      image,
+      tag
     })
 
     const validatorErrors = validationResult(req);
@@ -123,10 +145,19 @@ router.get('/login', csrfProtection, asyncHandler(async(req, res) => {
 const loginValidators = [
   check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('Did you forget your User Name?'),
+    .withMessage('Did you forget your User Name?')
+    .custom((value) => {
+      return db.User.findOne({ where: { userName: value } })
+        .then((user) => {
+          if (!user) {
+            return Promise.reject('That username does not exist!')
+          }
+        })
+    }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Did you forget your Password?'),
+
 ];
 
 router.post('/login', csrfProtection, loginValidators, asyncHandler( async (req, res, next) => {
@@ -156,14 +187,14 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler( async (req,
             csrfToken: req.csrfToken()
         });
     }
-
-
 }));
+
 
 router.get('/logout', (req, res) => {
     logoutUser(req, res)
     res.redirect('/users/login')
 })
+
 
 
 

@@ -1,0 +1,16 @@
+append head
+    link(rel='stylesheet' href='/stylesheets/edit-post.css')
+    div(class='edit-container')
+        form(action=`/posts/edit/${post.id}` method='post' class='posts-form')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            div(class='post-buttons-container form-group')
+                img(type='img' name='image' src=post.image class='post-input form-group' placeholder='image file url')
+            //- select(name='tagList' required class='select-input form-group')
+                //- each tag in tagList
+                //- option(value=tag.id)= tag.name
+            div(class='form-group__container')
+                input(type='text' name='title' value=post.title class='post-input form-group' placeholder='Add a title to your post..')
+            div(class='from-group__container')
+                input(type='text' name='description' value=post.description  class='post-input-description' placeholder='Edit your description')
+            button(href='/' class='post-cancel post-buttons') Cancel
+            button('/', class='post-buttons post-post') Post

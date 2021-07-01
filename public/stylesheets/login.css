@@ -17,7 +17,7 @@
     position: relative;
     top: 100px;
     background-color: white;
-    width: 800px;
+    width: 80%;
     height: auto;
     align-items: center;
     justify-content: center;
@@ -26,12 +26,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'g1-1 g1-1' 'g2-1 g2-2' 'g2-1 g2-2' 'g3-1 g3-1';
-    border-radius: 15px;
+    border-radius: 7px;
 }
 
 .logo-container {
     display: block;
     margin: 0 auto;
+    padding-top: 20px;
     grid-area: g1-1;
     font-family: 'Permanent Marker', cursive;
 }
