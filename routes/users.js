@@ -11,11 +11,11 @@ const { loginUser, logoutUser } = require('../auth')
 const router = express.Router();
 
 
-
-
 /* GET users listing. */
-router.get('/', (req, res, next) => {
-  res.send('respond with a resource');
+router.get('/', async (req, res, next) => {
+  const user = await db.User.findByPk(res.locals.user.id)
+
+  res.render('home-user', {user})
 });
 
 router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
@@ -84,13 +84,17 @@ router.post('/create', csrfProtection, userValidators,
       fullName,
       userName,
       email,
-      password
+      password,
+      image,
+      tag
     } = req.body
 
     const user = db.User.build({
       fullName,
       userName,
-      email
+      email,
+      image,
+      tag
     })
 
     const validatorErrors = validationResult(req);
@@ -123,10 +127,19 @@ router.get('/login', csrfProtection, asyncHandler(async(req, res) => {
 const loginValidators = [
   check('userName')
     .exists({ checkFalsy: true })
-    .withMessage('Did you forget your User Name?'),
+    .withMessage('Did you forget your User Name?')
+    .custom((value) => {
+      return db.User.findOne({ where: { userName: value } })
+        .then((user) => {
+          if (!user) {
+            return Promise.reject('That username does not exist!')
+          }
+        })
+    }),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Did you forget your Password?'),
+
 ];
 
 router.post('/login', csrfProtection, loginValidators, asyncHandler( async (req, res, next) => {

@@ -5,15 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     postId: DataTypes.INTEGER
   }, {});
   ManyTag.associate = function(models) {
-    // associations can be defined here
-    // ManyTag.belongsTo(models.Post, {
-    //     as: 'post',
-    //     foreignKey: 'postId'
-    //   });
-    // ManyTag.belongsTo(models.Tag, {
-    //   as: 'tag',
-    //   foreignKey: 'tagId'
-    // });
+  
   };
   return ManyTag;
 };

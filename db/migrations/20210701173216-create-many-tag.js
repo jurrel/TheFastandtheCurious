@@ -11,26 +11,22 @@ module.exports = {
       tagId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Tags'
-        }
+        references: { model: 'Tags' }
       },
       postId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Posts'
-        }
+        references: { model: 'Posts' }
       },
       createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE
-          },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE
-          }
-        });
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('ManyTags');

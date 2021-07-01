@@ -4,12 +4,14 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.bulkInsert('Tags', [
-      { name: 'Hot Wheels' },
-      { name: 'Harley Davidson' },
-      { name: 'BMW' },
+      { name: 'Default' },
+      { name: 'classics' },
+      { name: 'Supercar' },
+      { name: 'Motorcycles' },
       { name: 'Sport Cars' },
+      { name: 'Off-road Adventure'},
+      { name: 'JDM'},
       { name: 'Off-road Vehicles'},
-
     ], {
       fields: ['name']
     });

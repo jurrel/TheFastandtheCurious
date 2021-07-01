@@ -41,12 +41,13 @@ const tag = require('../db/models/tag');
 //     res.render('specificTag')
 // }))
 router.get('/:id', asyncHandler(async (req, res) => {
-    const post = await Tag.findOne({
-        where: { id: req.params.id },
-        include: Post
+    const post = await ManyTag.findAll({
+        // where: { id: req.params.id },
+        // include: postId
     });
-    // const post = await Tag.findByPk(req.params.id)
     console.log(post)
+    // const post = await Tag.findByPk(req.params.id)
+    // console.log(post)
     // const post = await ManyTag.findAll({
     //     where: {
     //         tagsId: tagsId
@@ -56,10 +57,10 @@ router.get('/:id', asyncHandler(async (req, res) => {
     //         model: Post,
     //     }]
     // })
-    res.send('success')
-    // res.render('specificTag', {
-    //     post, tagsId
-    // })
+    // res.send('success')
+    res.render('specificTag', {
+        post
+    })
 }))
 
 
