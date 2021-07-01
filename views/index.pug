@@ -34,10 +34,12 @@ block content
               div()
                 img( class='user-image' src='https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png')
               div()= post.userId
-            div(class='posts-container post-title')= post.title
-              div(class='post-description post-poster')= post.description
+            div(class='post-title')= post.title
+            div(class='post-description post-poster')= post.description
             div(class='post-image post-poster')
               img(src=post.image class='post-image-file' )
             div(class='post-buttons post-poster')
               button(class='post-like') like
               button(class='post-comment') comment
+              form(action=`posts/delete/${post.id}` method='post')
+                button(class='post-comment' role='button') delete

@@ -19,7 +19,7 @@ router.get('/create', requireAuth, csrfProtection,
 const postValidators = [
     check('title')
         .exists({ checkFalsy: true })
-        .withMessage('Title PLEASE!')
+        .withMessage('Please add a title!')
         .isLength({ max: 100 })
         .withMessage('Title has to be less than 100 characters'),
     check('description')
@@ -65,8 +65,22 @@ router.post('/create', requireAuth, csrfProtection, postValidators,
 
     }));
 
+// router.get('/delete/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+//   const postId = parseInt(req.params.id, 10);
+//   const post = await db.Post.findByPk(postId);
+//   res.render('book-delete', {
+//     title: 'Delete Book',
+//     post,
+//     csrfToken: req.csrfToken(),
+//   });
+// }));
 
-
+router.post('/delete/:id(\\d+)', asyncHandler(async (req, res) => {
+  const postId = parseInt(req.params.id, 10);
+  const post = await db.Post.findByPk(postId);
+  await post.destroy();
+  res.redirect('/');
+}));
 
 
 
