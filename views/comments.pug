@@ -14,8 +14,6 @@ block content
         div(class='post-user-container')
           form(class='delete-post' action=`posts/delete/${post.id}` method='post')
             button(class='delete-this-post' role='button') X
-              each user in users
-                if user.id === post.userId
                   div(class='users-contained')
                     img(class='post-user-image' src= user.image)
                     div(class='user-info-container')
@@ -28,14 +26,27 @@ block content
             div(class='post-description post-poster')= post.description
             div(class='post-image post-image-poster')
               img(src=post.image class='post-image-file')
-
+            div(class='login-header')
+              div(class='login-text')
+                form(action=`/${post.id}` method='post' class="fast-form")
+                  input(type='hidden' name='_csrf' value=csrfToken)
+                  input(type='text' name="Description" value=description class='comment-input' placeholder='Drop a comment yo' required)
+                  button(type='submit' class='login-button form-button') Comment
+                    a(href='/')
+            p
             div(class='post-comments') Comments
               p
-              each comment in comments
-                div
-                  each user in users
-                    if user.id === comment.userId
-                      div= user.userName
-                div
-                = comment.description
-                p
+                if comments
+                  each comment in comments
+                    p
+
+                    div
+                      each user in users
+                        if user.id === comment.userId
+                          div= user.userName
+                    div
+                    = comment.description
+                  else
+                    div(class='will-ferrell-div') Be the first to comment
+                      div Don't Forget...
+                        img(src='http://static1.squarespace.com/static/5ab91fd531d4df41e9024e59/t/5ac7b58a0e2e72739859ec2a/1523037587974/ricky-bobby.png?format=1500w' class='will-ferrell-pic')
