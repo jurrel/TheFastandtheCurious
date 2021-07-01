@@ -1,7 +1,6 @@
 extends layout
 append head
   link(rel='stylesheet' href='/stylesheets/posts.css')
-  link(rel='stylesheet' href='/stylesheets/create-posts.css')
 include utils
 block content
   div(class='this-back')
@@ -11,7 +10,6 @@ block content
             input(type='hidden' name='_csrf' value=csrfToken)
             select(name='tagList' required class='select-input')
               each tag in tagList
-                option(value='') - select a tag -
                 option(value=tag.id)= tag.name
             div(class='tip-contain')
               div(class='tips-container')

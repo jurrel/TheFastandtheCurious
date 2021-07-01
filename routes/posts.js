@@ -7,8 +7,7 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
-
-router.get('/create', requireAuth,csrfProtection,
+router.get('/create', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const posts = Post.build()
         const newTag = Tag.build();
@@ -31,10 +30,9 @@ const postValidators = [
     check('image')
         .isLength({ max: 500 })
         .withMessage('Your pic URL is too long'),
-
 ];
 
-router.post('/create', csrfProtection, postValidators,
+router.post('/create', requireAuth, csrfProtection, postValidators,
     asyncHandler(async (req, res, next) => {
         const {
             title,
@@ -42,30 +40,18 @@ router.post('/create', csrfProtection, postValidators,
             image,
         } = req.body;
 
-        let post = Post.build({
+        const post = Post.build({
             title,
             description,
             image,
             userId: res.locals.user.id
         });
         const validatorErrors = validationResult(req);
-        console.log(validatorErrors.isEmpty());
 
         if (validatorErrors.isEmpty()) {
-
-            const posts = await Post.create({
-                title,
-                description,
-                image,
-                userId: res.locals.user.id
-            });
-
-
-            console.log(validatorErrors);
-
-            return res.redirect('/', {posts})
+            await post.save()
+            return res.redirect('/')
         } else {
-            console.log('hello')
             const errors = validatorErrors.array().map((error) => error.msg);
             const tagList = await Tag.findAll();
             res.render('create-post', {
