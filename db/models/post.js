@@ -13,13 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId'
     });
 
-    // const columnMapping = {
-    //   through: 'ManyTag',
-    //   otherKey: 'tagId',
-    //   foreignKey: 'postId'
-    // }
+    const columnMapping = {
+      through: 'ManyTag',
+      otherKey: 'tagId',
+      foreignKey: 'postId'
+    }
 
-    // Post.belongsToMany(models.Tag, columnMapping);
+    Post.belongsToMany(models.Tag, columnMapping);
+
 
   };
   return Post;
