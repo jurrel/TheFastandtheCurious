@@ -26,6 +26,12 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
+      image: {
+        type: Sequelize.STRING(255),
+      },
+      tag: {
+        type: Sequelize.STRING(255),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

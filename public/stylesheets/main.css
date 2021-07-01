@@ -1,7 +1,11 @@
+.this-post {
+    margin-right: 40px;
+}
+
 .post-container {
     width: 100%;
     display: block;
-    margin: 7px 0;
+    margin: 10px 0;
 }
 
 .main-container {
@@ -9,8 +13,9 @@
 }
 
 .tags-container {
-    width: 100%;
+    width: 80%;
 }
+
 
 .post-grid-container {
     display: flex;
@@ -18,31 +23,39 @@
     align-items: center;
     border: 1px solid rgb(220, 220, 220);
     background-color: rgb(255, 255, 255);
+    border-radius: 5px;
 }
 
 .post-poster {
     display: flex;
-    justify-content: flex-start;
-    width: 100%;
+
     height: 40px;
     padding: 10px
+
+}
+
+.post-image-poster {
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
 }
 
 .post-image {
     width: 100%;
-    height: 200px;
     height: auto;
 }
 
 .post-image-file {
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     width: 100%;
     object-fit: cover;
 }
 
 .post-description {
     height: auto;
+    font-family: 'B612', sans-serif;
+
 }
 
 .tags-tags {
@@ -53,8 +66,8 @@
 .tags-link {
     display: block;
     text-decoration: none;
-    padding: 8px;
-    font-size: 12px;
+    padding: 12px;
+    font-size: 13.5px;
 }
 
 .tags-links:hover {
@@ -64,6 +77,8 @@
 h2 {
     font-size: 14px;
     margin: 10px;
+    padding-left: 20px;
+    color: rgb(150, 150, 150);
 }
 
 .timer-img {
@@ -76,11 +91,12 @@ h2 {
     display: flex;
     align-items: center;
 }
+
 .post-title {
     font-weight: bolder;
-
-
+    margin-top: 20px;
 }
+
 .post-title:hover {
     font-weight: bolder;
     text-decoration: underline;
@@ -90,7 +106,56 @@ h2 {
     display: block;
 }
 
-.user-image {
+
+/* .user-image {
     width: 30px;
     margin-left: 5%;
+} */
+
+.post-username {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+.post-user-email {
+    font-size: smaller;
+    color: blue;
+    margin-left: 20px;
+    align-self: center;
+}
+
+.post-title-contain {
+    margin-top: 10px;
+    display: flex;
+}
+
+.post-user-tag {
+    font-size: smaller;
+    color: grey;
+}
+
+.post-user-container {
+    width: 100%;
+    height: 30px;
+}
+
+.post-user-image {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 30px;
+}
+
+.post-timer {
+    margin: 0 20px;
+    font-size: 10px;
+    align-self: center;
+}
+
+.users-contained {
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    margin: 10px;
 }

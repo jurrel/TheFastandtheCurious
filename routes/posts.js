@@ -1,17 +1,15 @@
-const express = require('express');
 const router = express.Router();
+const express = require('express');
 const db = require('../db/models');
-const { Post } = db;
-const { Tag } = db;
 const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
 router.get('/create', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
-        const posts = Post.build()
-        const newTag = Tag.build();
-        const tagList = await Tag.findAll();
+        const posts = db.Post.build()
+        const newTag = db.Tag.build();
+        const tagList = await db.Tag.findAll();
 
     res.render('create-post', { posts, tagList, newTag, csrfToken: req.csrfToken() });
 }));
@@ -34,13 +32,14 @@ const postValidators = [
 
 router.post('/create', requireAuth, csrfProtection, postValidators,
     asyncHandler(async (req, res, next) => {
+        // console.log(req.body)
         const {
             title,
             description,
             image,
         } = req.body;
 
-        const post = Post.build({
+        const post = db.Post.build({
             title,
             description,
             image,
@@ -75,11 +74,16 @@ router.post('/create', requireAuth, csrfProtection, postValidators,
 //   });
 // }));
 
-router.post('/delete/:id(\\d+)', asyncHandler(async (req, res) => {
+router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   const postId = parseInt(req.params.id, 10);
   const post = await db.Post.findByPk(postId);
-  await post.destroy();
-  res.redirect('/');
+
+  if (res.locals.user.id === post.userId) {
+      await post.destroy()
+    }
+    res.redirect('/');
+
+
 }));
 
 
