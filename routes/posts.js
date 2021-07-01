@@ -98,7 +98,7 @@ router.get('/edit/:id(\\d+)', csrfProtection,
     });
   }));
 
-router.post('/edit/:id(\\d+)', csrfProtection, postValidators,
+router.post('/edit/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
     const postId = parseInt(req.params.id, 10);
     const postUpdate = await db.Post.findByPk(postId);
