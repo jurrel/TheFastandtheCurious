@@ -8,17 +8,17 @@ module.exports = (sequelize, DataTypes) => {
 
 
 
-    // const columnMapping = {
-    //   through: 'ManyTag',
-    //   otherKey: 'postId',
-    //   foreignKey: 'tagId'
-    // }
-
-    // Tag.belongsToMany(models.Post, columnMapping);
-    Tag.hasMany(models.ManyTag, {
-      as: 'posts',
+    const columnMapping = {
+      through: 'ManyTag',
+      otherKey: 'postId',
       foreignKey: 'tagId'
-    });
+    }
+
+    Tag.belongsToMany(models.Post, columnMapping);
+    // Tag.hasMany(models.ManyTag, {
+    //   as: 'posts',
+    //   foreignKey: 'tagId'
+    // });
 
 
   };
