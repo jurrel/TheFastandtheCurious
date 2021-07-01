@@ -28,11 +28,10 @@ block content
               img(src=post.image class='post-image-file')
             div(class='login-header')
               div(class='login-text')
-                form(action=`/${post.id}` method='post' class="fast-form")
+                form(action=`/${post.id}` method='post' class="comment-form")
                   input(type='hidden' name='_csrf' value=csrfToken)
                   input(type='text' name="Description" value=description class='comment-input' placeholder='Drop a comment yo' required)
-                  button(type='submit' class='login-button form-button') Comment
-                    a(href='/')
+                  button(type='submit' class='submit-button') Comment
             p
             div(class='post-comments') Comments
               p

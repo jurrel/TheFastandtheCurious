@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models');
-const { requireAuth } = require('../auth');
-const { check, validationResult } = require('express-validator')
-
+const { check, validationResult } = require('express-validator');
 const { asyncHandler, csrfProtection } = require('./utils');
+const { requireAuth } = require('../auth');
+
+
 
 /* GET home page. */
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
@@ -19,7 +20,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
 }));
 
 
-router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+router.get('/post/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const postId = parseInt(req.params.id, 10);
   const post = await db.Post.findByPk(postId);
 
@@ -37,13 +38,14 @@ router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, r
     //const comm = await db.Comment.build();
     // const comments = await db.Comment.findAll();
 
+    console.log(res.locals.user.id)
 
-    return res.render('comments', { post, user, users, comments, comm, csrfToken: req.csrfToken() })
+     res.render('comments', { post, user, users, comments, comm, csrfToken: req.csrfToken() })
   }
-  res.redirect('/')
+
 }))
 
-const validateComment = [
+const commentValidators = [
   check('description')
     .exists({ checkFalsy: true })
     .withMessage('You\'re need to make a comment if you\'re gonna come to this page')
@@ -51,5 +53,38 @@ const validateComment = [
     .withMessage('You\'re comment is far too long')
 ]
 
+router.post('/post/:id(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+
+    console.log('hello')
+    const postIdentity = parseInt(req.params.id, 10);
+
+
+
+    const {
+      description,
+      userId,
+      postId,
+    } = req.body;
+
+    const comment = db.Comment.build({
+      description,
+      userId: res.locals.user.id,
+      postId: postIdentity,
+    })
+
+    await comment.save();
+     return res.redirect('/')
+
+    // const validatorErrors = validationResult(req);
+    // console.log(validatorErrors);
+
+    // if (validatorErrors.isEmpty()) {
+    //   await comment.save();
+    //   return res.redirect('/')
+
+    // } else {
+
+    // }
+}))
 
 module.exports = router;
