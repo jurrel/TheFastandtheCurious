@@ -1,6 +1,8 @@
 const createError = require('http-errors');
 const express = require('express');
-const morgan = require("morgan");
+
+const bodyParser = require('body-parser');
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -13,7 +15,7 @@ const postsRouter = require('./routes/posts');
 const tagsRouter = require('./routes/tags');
 const db = require('./db/models');
 
-const cors = require('cors');
+
 const { restoreUser } = require('./auth');
 const { asyncHandler } = require('./routes/utils');
 const app = express();
@@ -22,12 +24,13 @@ const app = express();
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(cors({ origin: 'http://localhost:8080' }))
+
 app.use(express.json());
-app.use(morgan("dev"));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 
@@ -49,7 +52,10 @@ store.sync();
 
 
 app.use(restoreUser)
+
+
 app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 app.use('/tags', tagsRouter);

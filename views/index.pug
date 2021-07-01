@@ -1,26 +1,31 @@
 extends layout
-//- append head
-//-   //- add page specific styles by appending to the head
-//-   link(rel="stylesheet" href="/stylesheets/index.css")
-//-   link(rel="stylesheet" href="/stylesheets/main.css")
-//-   //- add page specific js
-//-   script(src="/javascripts/index.js" type="module" defer)
-//- include utils
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/main.css")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+include utils
 block content
   h1 Posts!!
 
-  div(class='tags-container') Hello
   script(src='/javascripts/index.js')
+  div(class='tags-container') Hello
+   
+    each post in posts
+        div
+          = post.title
+          div
+          = post.description
+          div
+          = post.image
+          div
+          button(class='edit-post') Edit
+          p
+          p
 
-      //- each post in posts
-      //-   div
-      //-     = post.title
-      //-     div
-      //-     = post.description
-      //-     div
-      //-     = post.image
-      //-     p
-      //-     p
+  //- //script(src='/javascripts/index.js')
+
 
 
 
@@ -42,7 +47,7 @@ block content
   //-           button(class='edit-button') Edit
   //-     div(class='post-container')
   //-       div(class='post-grid-container')
-  //-       script(src='/javascripts/index.js')
+  //-
   //-         div(class='post-poster post-username')
   //-           div() user image
   //-           div() unsername
