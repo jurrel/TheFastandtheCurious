@@ -10,7 +10,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
   const posts = await db.Post.findAll({})
   const tags = await db.Tag.findAll();
   const users = await db.User.findAll();
-  console.log(users)
+  // console.log(users)
 
   res.render('index', { title: 'The Fast and the Curious  --  A webpage designed for speed freaks!', posts, tags, users });
 

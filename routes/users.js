@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs');
 
 // const { User } = require('../db/models')
-const { loginUser, logoutUser } = require('../auth')
+const { loginUser, logoutUser, requireAuth } = require('../auth')
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   const user = await db.User.findByPk(res.locals.user.id)
 
-  res.render('home-user', {user})
+  res.render('home-user', { user })
 });
 
 router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
@@ -119,8 +119,8 @@ router.post('/create', csrfProtection, userValidators,
     }
   }));
 
-router.get('/login', csrfProtection, asyncHandler(async(req, res) => {
-  const user  = db.User.build()
+router.get('/login', csrfProtection, asyncHandler(async (req, res) => {
+  const user = db.User.build()
   res.render('login-user', { title: 'Login', user, csrfToken: req.csrfToken() })
 }))
 
@@ -142,42 +142,54 @@ const loginValidators = [
 
 ];
 
-router.post('/login', csrfProtection, loginValidators, asyncHandler( async (req, res, next) => {
-    const { userName, password } = req.body;
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res, next) => {
+  const { userName, password } = req.body;
 
-    const validatorErrors = validationResult(req)
-    let errors = [];
+  const validatorErrors = validationResult(req)
+  let errors = [];
 
-    if (validatorErrors.isEmpty()) {
-        const user = await db.User.findOne({where: {userName}})
+  if (validatorErrors.isEmpty()) {
+    const user = await db.User.findOne({ where: { userName } })
 
-        if (user !== null) {
-            const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
+    if (user !== null) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
 
-            if (passwordMatch) {
-                loginUser(req, res, user)
-                return res.redirect('/');
-            }
-        }
-        errors.push('Login attempt failed with the provided email address and password combination')
-    } else {
-        const errors = validatorErrors.array().map((error) => error.msg)
-        res.render('login-user', {
-            title: 'Login -- The Fast and the Curious --',
-            userName,
-            errors,
-            csrfToken: req.csrfToken()
-        });
+      if (passwordMatch) {
+        loginUser(req, res, user)
+        return res.redirect('/');
+      }
     }
+    errors.push('Login attempt failed with the provided email address and password combination')
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg)
+    res.render('login-user', {
+      title: 'Login -- The Fast and the Curious --',
+      userName,
+      errors,
+      csrfToken: req.csrfToken()
+    });
+  }
 
 
 }));
 
 router.get('/logout', (req, res) => {
-    logoutUser(req, res)
-    res.redirect('/users/login')
+  logoutUser(req, res)
+  res.redirect('/users/login')
 })
 
+router.post('/login/demo', csrfProtection, asyncHandler(async (req, res) => {
+  const username = 'SimonD123'
+  // const user = await db.User.findOne({ where: { userName } });
+  const user = await db.User.findByPk(1);
+  console.log(user.id)
+  
+  console.log('hello')
+  loginUser(req, res, user);
+  // console.log(req.session)
+  return res.redirect('/');
+  
+}));
 
 
 module.exports = router;
