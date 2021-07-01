@@ -12,7 +12,7 @@ block content
     div(class='post-container')
       div(class='post-grid-container')
         div(class='post-user-container')
-          form(class='delete-post' action=`posts/delete/${post.id}` method='post')
+          form(class='delete-post' action=`colin/delete/${post.id}` method='post')
             button(class='delete-this-post' role='button') X
                   div(class='users-contained')
                     img(class='post-user-image' src= user.image)
@@ -28,7 +28,7 @@ block content
               img(src=post.image class='post-image-file')
             div(class='login-header')
               div(class='login-text')
-                form(action=`/${post.id}` method='post' class="comment-form")
+                form(action=`posts/${post.id}` method='post' class="comment-form")
                   input(type='hidden' name='_csrf' value=csrfToken)
                   input(type='text' name="Description" value=description class='comment-input' placeholder='Drop a comment yo' required)
                   button(type='submit' class='submit-button') Comment
