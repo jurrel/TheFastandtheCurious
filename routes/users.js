@@ -20,6 +20,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
   const user = db.User.build();
+  // console.log(user)
   res.render('create-user', { csrfToken: req.csrfToken(), user })
 }));
 

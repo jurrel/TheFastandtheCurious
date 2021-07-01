@@ -12,7 +12,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     const posts = await db.Post.findAll({})
     const tags = await Tag.findAll();
 
-    console.log(tags)
+    // console.log(tags)
     res.render('index', {csrfToken: req.csrfToken(), posts, tags})
 }))
 
