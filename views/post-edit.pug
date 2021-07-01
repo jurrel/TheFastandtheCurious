@@ -10,4 +10,4 @@ form(action='/posts/edit' method='post' class='posts-form')
     img(type='img' name='image' src=post.image class='post-input' placeholder='image file url')
     div(class='post-buttons-container')
         a(href='/' class='post-cancel post-buttons') Cancel
-        a(href=`/posts/edit/${post.id}`, type='submit' class='post-buttons post-post') Post
+        a(href=`/posts/edit/${post.id}`, type='button' class='post-buttons post-post') Post

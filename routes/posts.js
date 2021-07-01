@@ -98,25 +98,24 @@ router.get('/edit/:id(\\d+)', csrfProtection,
     });
   }));
 
+
+const postValidatorss = []
+
 router.post('/edit/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
     const postId = parseInt(req.params.id, 10);
     const postUpdate = await db.Post.findByPk(postId);
 
     const {
-      title,
-      author,
-      releaseDate,
-      pageCount,
-      publisher,
+        title,
+        description,
+
     } = req.body;
 
-    const book = {
-      title,
-      author,
-      releaseDate,
-      pageCount,
-      publisher,
+    const post = {
+        title,
+        description,
+
     };
 
     const validatorErrors = validationResult(req);
