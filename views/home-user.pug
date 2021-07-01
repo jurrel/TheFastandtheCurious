@@ -1,0 +1,12 @@
+extends layout
+append head
+    link(rel='stylesheet' href='/stylesheets/profile.css')
+block content
+    div(class='profile-layout')
+        div(class='profile-info-container')
+            div(class='profile-basic')= user.userName
+            div(class='profile-basic')= user.fullName
+            div(class='profile-basic')= user.email
+            img(src= user.image class='profile-img')
+            div(class='profile-basic')= user.tag
+            form(action='users/create')

@@ -3,38 +3,42 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="/stylesheets/main.css")
+  link(rel="preconnect" href="https://fonts.googleapis.com")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 include utils
 block content
   div(class='main-container')
     div(class='tags-container')
-      h2 tags category
-        ul
-          li list
-          li list
-          li list
-          li list
-    div(class='postsss')
-      div(class='post-container')
-        div(class='post-grid-container')
-          div(class='post-poster post-username')
-            div() user image
-            div() unsername
-          div(class='post-description post-poster') Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore officiis voluptate ullam aspernatur omnis placeat ea. Voluptatem ullam, dolor a ratione, ea nostrum eveniet, molestias saepe rerum in nemo consectetur!
-          div(class='post-image post-poster')
-            img(class='post-image-file' src='https://www.speednik.com/wp-content/blogs.dir/1/files/2018/01/scientists-find-a-key-to-happiness-is-driving-a-fast-car-0001.jpg')
-          div(class='post-buttons post-poster')
-            button(class='post-like') like
-            button(class='post-comment') comment
-      div(class='post-container')
-        div(class='post-grid-container')
-          div(class='post-poster post-username')
-            div() user image
-            div() unsername
-          div(class='post-description post-poster') Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore officiis voluptate ullam aspernatur omnis placeat ea. Voluptatem ullam, dolor a ratione, ea nostrum eveniet, molestias saepe rerum in nemo consectetur!
-          div(class='post-image post-poster')
-            img(class='post-image-file' src='https://www.speednik.com/wp-content/blogs.dir/1/files/2018/01/scientists-find-a-key-to-happiness-is-driving-a-fast-car-0001.jpg')
-          div(class='post-buttons post-poster')
-            button(class='post-like') like
-            button(class='post-comment') comment
+      h2 Categories:
+        ul(class='tags-tags')
+          each tag in tags
+            div(class='tags-links')
+              img(src='https://image.flaticon.com/icons/png/512/4285/4285622.png' class='timer-img')
+              a(href=`${tag.name}` class='tags-link')= tag.name
+    div(class='this-post')
+      each post in posts
+        div(class='post-container')
+          div(class='post-grid-container')
+            div(class='post-user-container')
+              form(class='delete-post' action=`posts/delete/${post.id}` method='post')
+                button(class='delete-this-post' role='button') X
+              each user in users
+                if user.id === post.userId
+                  div(class='users-contained')
+                    img(class='post-user-image' src= user.image)
+                    div(class='user-info-container')
+                      div(class='post-username')= user.userName
+                      div(class='post-user-tag')= user.tag
+                    div(class='post-user-email')= user.email
+                    div(class='post-timer')= `posted ${Math.ceil((new Date() - post.createdAt)/60000)} minute(s) ago`
+            div(class='post-title-contain')
+              div(class='post-title')= post.title
+            div(class='post-description post-poster')= post.description
+            div(class='post-image post-image-poster')
+              img(src=post.image class='post-image-file' )
+            div(class='buttons-for-posts')
+              a(type='button')
+                img(class='like-button' src="https://image.pngaaa.com/118/177118-middle.png")
+              a(type='button')
+                img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0B_sGAQyQb0wxKtnHYi_xPQuQ5Six-GF3Q&usqp=CAU")
