@@ -22,13 +22,16 @@ router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
 router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
   const postId = parseInt(req.params.id, 10);
   const post = await db.Post.findByPk(postId);
-  console.log(post);
-  if (post) {
-    //const comm = await db.Comment.build();
-   // const comments = await db.Comment.findAll();
-console.log('hello')
 
-res.render('comments', { post, csrfToken: req.csrfToken()})
+  if (post.id) {
+    const comments = await db.Comment.findAll();
+
+    const users = await db.User.findAll();
+    //const comm = await db.Comment.build();
+    // const comments = await db.Comment.findAll();
+    console.log('hello')
+
+    return res.render('comments', { post, users, comments, csrfToken: req.csrfToken() })
   }
   res.redirect('/')
 }))
