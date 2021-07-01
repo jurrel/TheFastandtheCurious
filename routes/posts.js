@@ -9,10 +9,11 @@ const { requireAuth } = require('../auth');
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 
-    // const posts = await db.Post.build()
+    const posts = await db.Post.findAll();
+    console.log(posts)
 
-    // console.log(posts)
-    // res.render('index', {csrfToken: req.csrfToken(), posts})
+    console.log(posts)
+    res.render('index', {csrfToken: req.csrfToken(), posts})
 }))
 
 
