@@ -13,6 +13,7 @@ const router = express.Router();
 
 
 /* GET users listing. */
+<<<<<<< HEAD
 router.get('/:id(\\d+)', async (req, res, next) => {
   const user = await db.User.findByPk(res.locals.user.id)
   res.render('home-user', {user})
@@ -21,6 +22,12 @@ router.get('/:id(\\d+)', async (req, res, next) => {
 router.get('/all', async (req, res, next) => {
   const users = await db.User.findAll()
   res.render('all-user', {users})
+=======
+router.get('/', async (req, res, next) => {
+  const user = await db.User.findByPk(res.locals.user.id)
+
+  res.render('home-user', {user})
+>>>>>>> comments
 });
 
 router.post('/update/:id(\\d+)', asyncHandler(async (req, res) => {

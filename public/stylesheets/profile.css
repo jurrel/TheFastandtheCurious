@@ -1,26 +1,38 @@
 .profile-contianer {
+<<<<<<< HEAD
     display: flex;
 }
 
 .profile-info-container {
     display: block;
 }
+=======
+    margin: 0 auto;
+}
+
+>>>>>>> comments
 .profile-img {
     border-radius: 300px;
     width: 300px;
 }
 
 .profile-layout {
+<<<<<<< HEAD
     margin: 0 auto;
     display: flex;
     justify-content: center;
     border: 2px solid lightgrey;
     background-color: rgba(220, 220, 180, .5);
     width: 500px;
+=======
+    display: flex;
+    justify-content: center;
+>>>>>>> comments
 
 }
 .profile-basic {
     border: 1px solid black;
+<<<<<<< HEAD
     border-radius: 10px;
     padding: 2px 10px;
     display: block;
@@ -39,4 +51,7 @@
 .label-text {
     font-weight: bolder;
     display: block;
+=======
+
+>>>>>>> comments
 }
