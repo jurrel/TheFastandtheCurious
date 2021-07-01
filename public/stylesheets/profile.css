@@ -14,5 +14,11 @@
 }
 .profile-basic {
     border: 1px solid black;
+    border-radius: 10px;
+    padding: 2px 10px;
 
+}
+
+.user-tag {
+    height: 100px;
 }

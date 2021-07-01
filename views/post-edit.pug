@@ -1,13 +1,13 @@
 append head
     link(rel='stylesheet' href='/stylesheets/edit-post.css')
-form(action='/posts/edit' method='post' class='posts-form')
+form(action=`/posts/edit/${post.id}` method='post' class='posts-form')
     input(type='hidden' name='_csrf' value=csrfToken)
-    select(name='tagList' required class='select-input')
-        //- each tag in tagList
-        //- option(value=tag.id)= tag.name
+    //- select(name='tagList' required class='select-input')
+    //-     //- each tag in tagList
+    //-     //- option(value=tag.id)= tag.name
     input(type='text' name='title' value=post.title class='post-input' placeholder='Add a title to your post..')
     input(type='textarea' name='description' value=post.description  class='post-input-description' )
     img(type='img' name='image' src=post.image class='post-input' placeholder='image file url')
     div(class='post-buttons-container')
         a(href='/' class='post-cancel post-buttons') Cancel
-        a(href=`/posts/edit/${post.id}`, type='button' class='post-buttons post-post') Post
+        button(type='submit' class='post-buttons post-post') Post
