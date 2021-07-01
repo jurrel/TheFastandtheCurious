@@ -2,11 +2,17 @@ extends layout
 append head
     link(rel='stylesheet' href='/stylesheets/profile.css')
 block content
-    div(class='profile-layout')
-        div(class='profile-info-container')
-            div(class='profile-basic')= user.userName
-            div(class='profile-basic')= user.fullName
-            div(class='profile-basic')= user.email
-            img(src= user.image class='profile-img')
-            div(class='profile-basic user-tag')= user.tag
-            form(action='users/create')
+    div(class='container')
+        div(class='profile-layout')
+            div(class='profile-info-container')
+                label(class='label-text') Username
+                div(class='profile-basic')= user.userName
+                label(class='label-text') Full Name
+                div(class='profile-basic')= user.fullName
+                label(class='label-text') Email Address
+                div(class='profile-basic')= user.email
+                img(src= user.image class='profile-img')
+                label(class='label-text') Edit Personal Tag
+                input(class='profile-basic user-tag' name='user-tag' value=user.tag)
+                form(action=`users/update/${user.id}` method='post')
+                    button(type='submit') update

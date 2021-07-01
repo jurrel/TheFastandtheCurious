@@ -71,9 +71,8 @@ router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 
   if (res.locals.user.id === post.userId) {
       await post.destroy()
+      res.redirect('/');
     }
-    res.redirect('/');
-
 
 }));
 
@@ -101,7 +100,6 @@ router.post('/edit/:id(\\d+)', csrfProtection,
     const postId = parseInt(req.params.id, 10);
     const postUpdate = await db.Post.findByPk(postId);
 
-    console.log(req.body)
 
     const {
         id,
@@ -118,8 +116,29 @@ router.post('/edit/:id(\\d+)', csrfProtection,
     };
         await postUpdate.update(post);
         res.redirect('/');
-  }));
+}));
 
+router.post('/like/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+  const postId = parseInt(req.params.id, 10);
+  const postUpdate = await db.Post.findByPk(postId);
+    const newLike = postUpdate.postLikes + 1
+    const likey = {
+        postLikes: newLike
+    }
+    await postUpdate.update(likey)
+    res.redirect('/');
+}));
+
+router.post('/hate/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+  const postId = parseInt(req.params.id, 10);
+  const postUpdate = await db.Post.findByPk(postId);
+    const newLike = postUpdate.postLikes - 1
+    const hatey = {
+        postLikes: newLike
+    }
+    await postUpdate.update(hatey)
+    res.redirect('/');
+}));
 
 
 
