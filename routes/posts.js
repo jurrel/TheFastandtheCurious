@@ -45,17 +45,23 @@ const postValidators = [
 router.post('/create', csrfProtection, postValidators,
     asyncHandler(async (req, res, next) => {
         const {
+            id,
             title,
             description,
             image,
         } = req.body;
 
         let post = Post.build({
+            id,
             title,
             description,
             image,
             userId: res.locals.user.id
         });
+
+        console.log(post);
+
+
         const validatorErrors = validationResult(req);
         console.log(validatorErrors.isEmpty());
 
