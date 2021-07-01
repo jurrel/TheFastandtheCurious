@@ -7,7 +7,7 @@ const { asyncHandler, csrfProtection } = require('./utils');
 /* GET home page. */
 router.get('/', csrfProtection, asyncHandler(async (req, res, next) => {
 
-  const posts = await db.Post.findAll({include: Users})
+  const posts = await db.Post.findAll({})
   const tags = await db.Tag.findAll();
 
   // console.log(posts)

@@ -1,26 +1,28 @@
 extends layout
 append head
   link(rel='stylesheet' href='/stylesheets/posts.css')
+  link(rel='stylesheet' href='/stylesheets/create-posts.css')
 include utils
 block content
-  div(class='posts-container')
-    div(class='posts-form-container')
-      form(action='/posts/create' method='post' class='posts-form')
-          input(type='hidden' name='_csrf' value=csrfToken)
-          select(name='tagList' required class='select-input')
-            each tag in tagList
-              option(value='') - select a tag -
-              option(value=tag.id)= tag.name
-          div(class='tip-contain')
-            div(class='tips-container')
-              p(class='tips-tag') tips on creating a post
-                ul
-                  li(class='post-tips') - tip 1
-                  li(class='post-tips') - tip 1
-                  li(class='post-tips') - tip 1
-          input(type='text' name='title' value=title class='post-input' placeholder='Add a title to your post..')
-          input(type='textarea' name='description' value=description class='post-input-description' placeholder='Write about your post..' )
-          input(type='img' name='image' value=image class='post-input' placeholder='image file url')
-          div(class='post-buttons-container')
-            a(href='/' class='post-cancel post-buttons') Cancel
-            button(type='submit' class='post-buttons post-post') Post
+  div(class='this-back')
+    div(class='posts-container')
+      div(class='posts-form-container')
+        form(action='/posts/create' method='post' class='posts-form')
+            input(type='hidden' name='_csrf' value=csrfToken)
+            select(name='tagList' required class='select-input')
+              each tag in tagList
+                option(value='') - select a tag -
+                option(value=tag.id)= tag.name
+            div(class='tip-contain')
+              div(class='tips-container')
+                p(class='tips-tag') Tips on getting good answers quickly
+                  ul
+                    li(class='post-tips') - Make sure your question has not been asked already
+                    li(class='post-tips') - Keep your question short and to the point
+                    li(class='post-tips') - Double-check grammar and spelling
+            input(type='text' name='title' value=title class='post-input' placeholder='Add a title to your post..')
+            input(type='textarea' name='description' value=description class='post-input-description' placeholder='Write about your post..' )
+            input(type='img' name='image' value=image class='post-input' placeholder='image file url')
+            div(class='post-buttons-container')
+              a(href='/' class='post-cancel post-buttons') Cancel
+              button(type='submit' class='post-buttons post-post') Post

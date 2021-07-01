@@ -7,15 +7,6 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
-router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-
-    const posts = await db.Post.findAll({})
-    const tags = await Tag.findAll();
-
-    // console.log(tags)
-    res.render('index', {csrfToken: req.csrfToken(), posts, tags})
-}))
-
 
 router.get('/create', requireAuth,csrfProtection,
     asyncHandler(async (req, res) => {
