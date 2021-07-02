@@ -42,7 +42,7 @@ store.sync();
 app.use(restoreUser)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter)
+app.use('/posts', postsRouter) 
 app.use('/likes', likesRouter)
 app.use('/comments', commentsRouter)
 
