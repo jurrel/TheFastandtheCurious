@@ -2,23 +2,33 @@
     width: 200px;
     border-radius: 500px;
     height: 200px;
+    justify-self: center;
+
 }
 
 .users-container {
-    border: 1px solid black;
-    width: 250px
-}
-
-.users-table {
-
+    height: 100%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .user-list {
-    width: 250px;
-    height: 350px;
+    border: 2px solid lightgrey;
+    display: flex;
+    width: 240px;
+    justify-content: center;
+    background-color: white;
 }
 
 .userss {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.user-basics {
+    text-align: center;
+    padding: 10px 0;
 }

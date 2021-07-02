@@ -27,4 +27,3 @@ router.post("/search", requireAuth, csrfProtection, asyncHandler(async (req, res
         res.redirect()
     }
 });
-

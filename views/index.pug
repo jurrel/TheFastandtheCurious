@@ -15,7 +15,7 @@ block content
           each tag in tags
             div(class='tags-links')
               img(src='https://image.flaticon.com/icons/png/512/4285/4285622.png' class='timer-img')
-              a(href=`${tag.name}` class='tags-link')= tag.name
+              a(href=`/tags/${tag.id}` class='tags-link' value=tag.id)= tag.name
     div(class='this-post')
       each post in posts
         div(class='post-container')
@@ -39,12 +39,12 @@ block content
               img(src=post.image class='post-image-file' )
             div(class='buttons-for-posts')
               a(type='button' href=`comments/${post.id}`)
-                img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0B_sGAQyQb0wxKtnHYi_xPQuQ5Six-GF3Q&usqp=CAU")
+                img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgRqp-cHJ8h1-nwjnqa3BahRWMKNss_0ARckb7uuc1SY9fi9TdN25JsN1kl22P5hjuNpI&usqp=CAU")
               a(type='button' href=`/posts/edit/${post.id}`)
-                img(class='like-button' src="https://www.pngrepo.com/png/240150/512/edit-pencil.png")
-              div(class='like-hate')
-                form(action=`/posts/hate/${post.id}` method="post")
-                  button(type='submit' class='hate-me-button like-button like' id='hate') 👻
-                a(class='ratings')= post.postLikes
-                form(action=`/posts/like/${post.id}` method="post")
-                  button(href=`/posts/like/${post.id}` class='like-me-button like-button hate' id='like') 🙏
+                img(class='like-button' src="https://www.pngitem.com/pimgs/m/114-1146547_new-post-new-post-icon-svg-hd-png.png")
+            div(class='like-hate')
+              form(action=`/posts/hate/${post.id}` method="post")
+                button(type='submit' class='hate-me-button like-button like' id='hate') 👎
+              a(class='ratings')= post.postLikes
+              form(action=`/posts/like/${post.id}` method="post")
+                button(href=`/posts/like/${post.id}` class='like-me-button like-button hate' id='like') 👍

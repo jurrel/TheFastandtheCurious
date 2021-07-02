@@ -1,4 +1,11 @@
 extends layout
+append head
+    link(rel='stylesheet' href='/stylesheets/likes.css')
 block content
-    each post in posts
-        div under construction
+    div(class='star-liked')
+        each post in posts
+            each user in users
+                if user.id === post.userId
+                    label(class='postId')
+                        a= `Fast Member ${user.userName} has ${post.postLikes} likes on ${post.title}!!`
+                        img(src= post.image class='like-image')

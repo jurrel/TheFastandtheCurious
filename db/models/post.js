@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     image: DataTypes.STRING,
     postLikes: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    tagId: DataTypes.INTEGER
   }, {});
   Post.associate = function (models) {
     // associations can be defined here
@@ -21,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 //     }
 // =======
     Post.hasMany(models.Comment, { foreignKey: 'postId' });
+    Post.hasMany(models.ManyTag, { foreignKey: 'tagId' });
     // const columnMapping = {
     //   through: 'ManyTag',
     //   otherKey: 'tagId',

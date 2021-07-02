@@ -10,7 +10,7 @@ block content
             input(type='hidden' name='_csrf' value=csrfToken)
             select(name='tagList' required class='select-input')
               each tag in tagList
-                option(value=tag.id)= tag.name
+                option(value=tag.id name='tagId')= tag.name
             div(class='tip-contain')
               div(class='tips-container')
                 p(class='tips-tag') Tips on getting good answers quickly

@@ -22,5 +22,4 @@ router.get('/', csrfProtection, requireAuth, asyncHandler(async (req, res, next)
 
 
 
-
 module.exports = router;

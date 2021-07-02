@@ -61,15 +61,43 @@ h1 {
 
 .buttons-for-posts {
     float: right;
-
 }
 
 .like-button {
     height: 45px;
-    border-radius: 30px;
-
 }
 
 .like-button:hover {
     cursor: pointer;
+}
+
+.buttons-for-posts {
+    width: 100px;
+    height: 0px;
+    align-content: center;
+}
+
+.like-button {
+    height: 30px;
+    background-color: white;
+}
+
+.post-likes {
+    justify-items: center
+}
+
+.like-hate {
+    display: flex;
+    margin-left: 200px;
+}
+
+.ratings {
+    border: 2px solid grey;
+    background-color: white;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    justify-items: center;
+    padding: 3.5px;
 }

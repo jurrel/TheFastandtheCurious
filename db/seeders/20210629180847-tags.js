@@ -12,6 +12,9 @@ module.exports = {
       { name: 'Off-road Adventure'},
       { name: 'JDM'},
       { name: 'Off-road Vehicles'},
+      { name: 'Rockets'},
+      { name: 'ELECTRIC'},
+      { name: 'NOS'},
     ], {
       fields: ['name']
     });

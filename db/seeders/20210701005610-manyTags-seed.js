@@ -18,7 +18,7 @@ module.exports = {
       { tagId: 4, postId: 7, createdAt: new Date(), updatedAt: new Date() },
       { tagId: 4, postId: 8, createdAt: new Date(), updatedAt: new Date() },
       { tagId: 1, postId: 8, createdAt: new Date(), updatedAt: new Date() },
-      
+
 
     ], {});
   },

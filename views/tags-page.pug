@@ -1,0 +1,13 @@
+extends layout
+append head
+    link(rel='stylesheet' href='/stylesheets/users-page.css')
+block content
+    div(class='user-table')
+        div(class='userss')
+            each post in posts
+                div(class='user-list')
+                    div(class='users-container')
+                        div(class='user-basics')= post.title
+                        img(class='user-img' src= post.image)
+                        div(class='user-basics')= post.description
+                        div(class='user-basics')= post.tag

@@ -31,6 +31,12 @@ module.exports = {
           model: 'Users'
         },
       },
+      tagId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Tags'
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

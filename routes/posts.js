@@ -39,24 +39,26 @@ router.post('/create', csrfProtection, postValidators,
             title,
             description,
             image,
+            tagList,
         } = req.body;
 
         const post = db.Post.build({
             title,
             description,
             image,
+            tagId: tagList,
             userId: res.locals.user.id
         });
         const validatorErrors = validationResult(req);
 
         if (validatorErrors.isEmpty()) {
+
             await post.save()
             return res.redirect('/')
         } else {
             const errors = validatorErrors.array().map((error) => error.msg);
-            const tagList = await Tag.findAll();
+            const tagList = await db.Tag.findAll();
             res.render('create-post', {
-
                 post,
                 errors,
                 tagList,
@@ -96,11 +98,13 @@ router.get('/edit/:id(\\d+)', csrfProtection,
   asyncHandler(async (req, res) => {
     const postId = parseInt(req.params.id, 10);
     const post = await db.Post.findByPk(postId);
+    const tagList = await db.Tag.findAll();
 
     if (res.locals.user.id === post.userId) {
         res.render('post-edit', {
           title: 'Edit meee',
           post,
+          tagList,
           csrfToken: req.csrfToken(),
         });
 
@@ -120,6 +124,7 @@ router.post('/edit/:id(\\d+)', csrfProtection,
         id,
         title,
         description,
+        tagList
 
     } = req.body;
 
@@ -127,6 +132,7 @@ router.post('/edit/:id(\\d+)', csrfProtection,
         id,
         title,
         description,
+        tagId: tagList
 
     };
         await postUpdate.update(post);

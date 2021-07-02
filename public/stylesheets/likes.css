@@ -1,0 +1,12 @@
+.like-image {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    border: 4px solid black;
+    padding: 10px 7px;
+    margin: 0 auto;
+}
+
+.star-liked {
+    padding: 10px 0;
+}

@@ -17,7 +17,7 @@
     position: relative;
     top: 100px;
     background-color: white;
-    width: 80%;
+    width: 70%;
     height: auto;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@
 .logo {
     display: block;
     margin: 0 auto;
-    width: 300px;
+    width: 250px;
 }
 
 .login-form {
@@ -131,7 +131,7 @@
     color: darkred;
     padding: 20px 60px;
     font-weight: bolder;
-    width: 700px;
+    width: 400px;
 }
 
 .sign-up-text {
@@ -154,7 +154,8 @@
 
 .login-buttons {
     display: inline;
-    margin: 0 auto;
+    margin-left: 200px;
+
 }
 
 .demo-button {

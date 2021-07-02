@@ -5,9 +5,13 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
-router.get('/', (req, res) => {
-    const posts = db.Post.build()
-    res.render('likes', {posts})
+router.get('/', async (req, res) => {
+    const posts = await db.Post.findAll({order: [["postLikes", "desc"]]})
+    const users = await db.User.findAll()
+    console.log(users)
+    // const tagList = await db.Tag.findAll();
+
+    res.render('likes', {posts, users})
 })
 
 
