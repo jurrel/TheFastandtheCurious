@@ -159,3 +159,21 @@ h2 {
     justify-items: left;
     margin: 10px;
 }
+
+.buttons-for-posts {
+    width: 300px;
+    height: 60px;
+    align-content: center;
+}
+
+.likes-button {
+    position: relative;
+    margin: 10px;
+}
+.post-likes {
+    justify-items: center;
+}
+
+.like-hate {
+    display: flex
+}

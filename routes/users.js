@@ -4,6 +4,7 @@ const { csrfProtection, asyncHandler } = require('./utils')
 const db = require('../db/models')
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs');
+// const { requireAuth } = require('../auth')
 
 // const { User } = require('../db/models')
 const { loginUser, logoutUser, requireAuth } = require('../auth')
@@ -12,11 +13,29 @@ const router = express.Router();
 
 
 /* GET users listing. */
-router.get('/', async (req, res, next) => {
+router.get('/:id(\\d+)', async (req, res, next) => {
   const user = await db.User.findByPk(res.locals.user.id)
 
   res.render('home-user', { user })
 });
+
+router.get('/all', async (req, res, next) => {
+  const users = await db.User.findAll()
+  res.render('all-user', {users})
+});
+
+router.post('/update/:id(\\d+)', asyncHandler(async (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const userUpdate = await db.User.findByPk(userId);
+
+  const { tag } = req.body
+
+  const thisTag = {tag}
+  await userUpdate.update(thisTag)
+
+  res.redirect('/');
+
+}));
 
 router.get('/create', csrfProtection, asyncHandler(async (req, res) => {
   const user = db.User.build();
@@ -173,6 +192,7 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
 }));
 
+
 router.get('/logout', (req, res) => {
   logoutUser(req, res)
   res.redirect('/users/login')
@@ -190,6 +210,7 @@ router.post('/login/demo', csrfProtection, asyncHandler(async (req, res) => {
   return res.redirect('/');
   
 }));
+
 
 
 module.exports = router;
