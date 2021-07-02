@@ -20,13 +20,13 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         'NOS'
     ]
 
-        console.log(searchQuery)
+
 
 
         let searchNumber = 1
 
         dictionary.forEach((tag, ind) => {
-            if (tag === searchQuery) {
+            if (tag.toLowerCase() === searchQuery.toLowerCase()) {
                 searchNumber += ind
             }
         });
