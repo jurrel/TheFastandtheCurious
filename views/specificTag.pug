@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 Tags
+    body  
+        each post in posts
+            a(href=`${post.id}`)
+            console.log(post.id)
