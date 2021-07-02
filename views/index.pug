@@ -38,7 +38,7 @@ block content
             div(class='post-image post-image-poster')
               img(src=post.image class='post-image-file' )
             div(class='buttons-for-posts')
-              a(type='button')
+              a(type='button' href=`comments/${post.id}`)
                 img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp0B_sGAQyQb0wxKtnHYi_xPQuQ5Six-GF3Q&usqp=CAU")
               a(type='button' href=`/posts/edit/${post.id}`)
                 img(class='like-button' src="https://www.pngrepo.com/png/240150/512/edit-pencil.png")

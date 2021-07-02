@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const db = require('../db/models');
@@ -5,14 +6,15 @@ const { check, validationResult } = require('express-validator');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth');
 
-router.get('/create', requireAuth, csrfProtection,
+router.get('/create', csrfProtection,
     asyncHandler(async (req, res) => {
         const posts = await db.Post.build()
         const newTag = db.Tag.build();
         const tagList = await db.Tag.findAll();
 
-        res.render('create-post', { posts, tagList, newTag, csrfToken: req.csrfToken() });
-    }));
+        res.render('create-post', {posts, newTag, tagList, csrfToken: req.csrfToken()})
+}))
+
 
 const postValidators = [
     check('title')
@@ -30,7 +32,7 @@ const postValidators = [
         .withMessage('Your pic URL is too long'),
 ];
 
-router.post('/create', requireAuth, csrfProtection, postValidators,
+router.post('/create', csrfProtection, postValidators,
     asyncHandler(async (req, res, next) => {
         // console.log(req.body)
         const {
@@ -64,6 +66,19 @@ router.post('/create', requireAuth, csrfProtection, postValidators,
 
     }));
 
+// router.get('/delete/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+//   const postId = parseInt(req.params.id, 10);
+//   const post = await db.Post.findByPk(postId);
+//   res.render('book-delete', {
+//     title: 'Delete Book',
+//     post,
+//     csrfToken: req.csrfToken(),
+//   });
+// }));
+
+// router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+//   const postId = parseInt(req.params.id, 10);
+//   const post = await db.Post.findByPk(postId);
 
 router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const postId = parseInt(req.params.id, 10);

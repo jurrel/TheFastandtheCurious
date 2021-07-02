@@ -1,0 +1,20 @@
+.commenter-img {
+    width: 100px;
+    border: 1px solid black
+}
+
+.commenter-comment {
+    border: 1px solid black
+}
+
+.commenter-username {}
+
+.post-image-file {
+    width: 800px;
+
+}
+
+.post-container {
+    margin: 0 auto;
+
+}

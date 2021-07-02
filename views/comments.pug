@@ -1,0 +1,38 @@
+extends layout
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/comments.css")
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  //- add page specific js
+  script(src="/javascripts/index.js" type="module" defer)
+include utils
+block content
+  div(class='this-post')
+    div(class='post-container')
+      div(class='post-title-contain')
+        div(class='post-title')= post.title
+      div(class='post-description post-poster')= post.description
+      div(class='post-image post-image-poster')
+        img(src=post.image class='post-image-file')
+      div(class='login-header')
+        div(class='login-text')
+      form(action=`/comments/${post.id}` method='post' class="comment-form")
+        input(type='text' name="description" value=description class='comment-input' placeholder='Drop a comment yo' required)
+        button(type='submit' class='submit-button') Comment
+      p
+      div(class='post-comments') Comments
+        p
+          if comments
+            each comment in comments
+              p
+
+              div
+                each user in users
+                  if user.id === comment.userId
+                    div(class='commenter-username')= user.userName
+                    img(class='commenter-img' src= user.image)
+              div(class='commenter-comment')= comment.description
+            else
+              div(class='will-ferrell-div') Be the first to comment
+                div Don't Forget...
+                  img(src='http://static1.squarespace.com/static/5ab91fd531d4df41e9024e59/t/5ac7b58a0e2e72739859ec2a/1523037587974/ricky-bobby.png?format=1500w' class='will-ferrell-pic')
