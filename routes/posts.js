@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const db = require('../db/models');
@@ -8,6 +9,84 @@ const { requireAuth } = require('../auth');
 router.get('/create', requireAuth, csrfProtection,
     asyncHandler(async (req, res) => {
         const posts = await db.Post.build()
+        const newTag = db.Tag.build();
+        const tagList = await db.Tag.findAll();
+
+
+
+// router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+//     const postId = parseInt(req.params.id, 10);
+//     const post = await db.Post.findByPk(postId);
+
+//     if (post.id) {
+//         const comments = await db.Comment.findAll({
+//             where: { postId: postId }
+//         });
+
+//         const comm = db.Comment.build();
+
+//         const user = await db.User.findByPk(post.userId);
+//         const users = await db.User.findAll();
+
+
+//         //const comm = await db.Comment.build();
+//         // const comments = await db.Comment.findAll();
+
+//         const postIdentity = parseInt(req.params.id, 10);
+//         console.log(postIdentity)
+
+//        return res.render('comments', { post, user, users, comments, comm, csrfToken: req.csrfToken() })
+//     }
+
+// }))
+
+// const commentValidators = [
+//     check('description')
+//         .exists({ checkFalsy: true })
+//         .withMessage('You\'re need to make a comment if you\'re gonna come to this page')
+//         .isLength({ max: 1000 })
+//         .withMessage('You\'re comment is far too long')
+// ]
+
+// router.post('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res, next) => {
+
+//     console.log('hello')
+//     const postIdentity = parseInt(req.params.id, 10);
+
+
+
+//     const {
+//         description,
+//         userId,
+//         postId,
+//     } = req.body;
+
+//     const comment = db.Comment.build({
+//         description,
+//         userId: res.locals.user.id,
+//         postId: postIdentity,
+//     })
+
+//     await comment.save();
+//     return res.redirect('/')
+
+//     // const validatorErrors = validationResult(req);
+//     // console.log(validatorErrors);
+
+//     // if (validatorErrors.isEmpty()) {
+//     //   await comment.save();
+//     //   return res.redirect('/')
+
+//     // } else {
+
+//     // }
+// }))
+
+
+
+router.get('/create', requireAuth, csrfProtection,
+    asyncHandler(async (req, res) => {
+        const posts = db.Post.build()
         const newTag = db.Tag.build();
         const tagList = await db.Tag.findAll();
 
@@ -64,7 +143,21 @@ router.post('/create', requireAuth, csrfProtection, postValidators,
 
     }));
 
+// router.get('/delete/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+//   const postId = parseInt(req.params.id, 10);
+//   const post = await db.Post.findByPk(postId);
+//   res.render('book-delete', {
+//     title: 'Delete Book',
+//     post,
+//     csrfToken: req.csrfToken(),
+//   });
+// }));
 
+// router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+//   const postId = parseInt(req.params.id, 10);
+//   const post = await db.Post.findByPk(postId);
+
+<<<<<<< HEAD
 router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   const postId = parseInt(req.params.id, 10);
   const post = await db.Post.findByPk(postId);
@@ -139,6 +232,16 @@ router.post('/hate/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     await postUpdate.update(hatey)
     res.redirect('/');
 }));
+=======
+//   if (res.locals.user.id === post.userId) {
+//       await post.destroy()
+//     }
+//     res.redirect('/');
+
+
+// }));
+
+>>>>>>> comments
 
 
 
