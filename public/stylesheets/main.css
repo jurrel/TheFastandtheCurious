@@ -9,7 +9,8 @@
 }
 
 .main-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.5fr 10fr;
 }
 
 .tags-container {

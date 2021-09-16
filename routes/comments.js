@@ -51,13 +51,34 @@ router.post('/:id(\\d+)', requireAuth, commentValidators, asyncHandler(async (re
         return res.redirect(`/comments/${postIdentity}`)
     } else {
         const errors = validatorErrors.array().map((error) => error.msg);
-        const comments = await Comment.findAll();
+        const comments = await db.Comment.findAll();
         res.render('create-post', {
             commments,
             errors,
             csrfToken: req.csrfToken(),
         })
 }
+}));
+
+router.post('/edit/:id(\\d+)', csrfProtection,
+    asyncHandler(async (req, res) => {
+        const commentId = parseInt(req.params.id, 10);
+        const comment = await db.Comment.findByPk(commentId);
+
+        if (res.locals.user.id === comment.userId) {
+            res.render("")
+        }
+
 }))
+
+router.post('/delete/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const commentId = parseInt(req.params.id, 10);
+    const comment = await db.Comment.findByPk(commentId);
+
+    if (res.locals.user.id === comment.userId) {
+        await comment.destroy();
+        res.redirect('/');
+    }
+}));
 
 module.exports=router
