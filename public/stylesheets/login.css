@@ -1,8 +1,8 @@
 .login-body {
     background: rgb(131, 59, 36);
-    background: url('https://images.squarespace-cdn.com/content/v1/5601b862e4b07f880ad7d1fd/1532678606115-O83EBGSQU0VNQ2N3PQVT/fast_and_curious_web.jpg?format=2500w');
+    background: url(../assets/lambo_color.webp);
     background-size: cover;
-    height: 1000px;
+    height: 100%;
     margin-top: -80px;
     width: auto;
 }
@@ -11,6 +11,7 @@
     width: 150px;
     display: flex;
     justify-items: center;
+
 }
 
 .login-container {
@@ -27,6 +28,11 @@
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 'g1-1 g1-1' 'g2-1 g2-2' 'g2-1 g2-2' 'g3-1 g3-1';
     border-radius: 7px;
+    box-shadow: 2px 2px 10px black;
+}
+
+label {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .logo-container {
@@ -41,6 +47,7 @@
     display: block;
     margin: 0 auto;
     width: 250px;
+    content: url(../assets/fnf-logo.png);
 }
 
 .login-form {
@@ -50,7 +57,6 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-
 }
 
 .form-buttons {
@@ -116,7 +122,7 @@
 
 .errors {
     grid-area: g3-1;
-
+    padding-bottom: 20px;
 }
 
 .errors-title {
@@ -149,13 +155,11 @@
 .form-user-buttons {
     display: flex;
     justify-content: space-around;
-
 }
 
 .login-buttons {
     display: inline;
     margin-left: 200px;
-
 }
 
 .demo-button {
