@@ -10,11 +10,8 @@ router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, r
     const postId = parseInt(req.params.id, 10);
     const post = await db.Post.findByPk(postId);
     const comments = await db.Comment.findAll({where: {postId}});
-
     const comm = db.Comment.build();
     const users = await db.User.findAll();
-    // const comm = await db.Comment.build();
-    // const comments = await db.Comment.findAll();
 
     const postIdentity = parseInt(req.params.id, 10);
     console.log(postIdentity)

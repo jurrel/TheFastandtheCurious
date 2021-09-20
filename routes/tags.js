@@ -12,9 +12,8 @@ const tag = require('../db/models/tag');
 router.get('/:id', asyncHandler(async (req, res) => {
     const tagId = parseInt(req.params.id)                  //turn {'1'}  into 1
     const path = req.path.split('/').join('')
-    // const posts = await db.Post.findAll({order: [["updatedAt", "desc"]]})
-  const tags = await db.Tag.findAll();
-  const users = await db.User.findAll({order: [["updatedAt", "desc"]]});
+    const tags = await db.Tag.findAll();
+    const users = await db.User.findAll({order: [["updatedAt", "desc"]]});
     const posts = await db.Post.findAll({
         where: {
             tagId: path

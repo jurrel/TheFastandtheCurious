@@ -6,23 +6,19 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         let searchQuery = document.querySelector('.search-bar').value
 
 
-    const dictionary = [
-        "Default",
-        "classics",
-        "Supercar",
-        'Motorcycles',
-        'Sport Cars',
-        'Off-road Adventure',
-        'JDM',
-        'Off-road Vehicles',
-        'Rockets',
-        'ELECTRIC',
-        'NOS'
-    ]
-
-
-
-
+        const dictionary = [
+            "Default",
+            "classics",
+            "Supercar",
+            'Motorcycles',
+            'Sport Cars',
+            'Off-road Adventure',
+            'JDM',
+            'Off-road Vehicles',
+            'Rockets',
+            'ELECTRIC',
+            'NOS'
+        ]
         let searchNumber = 1
 
         dictionary.forEach((tag, ind) => {
@@ -31,9 +27,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             }
         });
 
-
-
-        console.log(window.location.href = `/tags/${searchNumber}`)
+        window.location.href = `/tags/${searchNumber}`
 
 
 
