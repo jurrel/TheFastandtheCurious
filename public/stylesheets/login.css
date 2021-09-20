@@ -108,13 +108,18 @@ label {
     border: 1px solid rgb(204, 212, 204);
 }
 
-
-
 .forgot-password {
-    padding: 20px;
+    padding: 5px 20px;
     font-size: smaller;
     color: grey;
     text-decoration: none;
+}
+
+.forgot-password:hover {
+    color: red;
+    background-color: rgb(237, 231, 231);
+    border: 1px solid rgb(240, 235, 235);
+    border-radius: 20px;
 }
 
 .login-header {
@@ -146,8 +151,9 @@ label {
     background-color: pink;
     color: darkred;
     padding: 20px 60px;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     width: 400px;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .sign-up-text {
@@ -173,14 +179,11 @@ label {
 }
 
 .demo-button {
-
     position: relative;
     top: -45px;
     left: 10px;
 }
 
-
 button:hover {
     cursor: pointer;
-
 }
