@@ -16,14 +16,14 @@ const Op = Sequelize.Op;
 
 //         res.render('create-post', { posts, tagList, newTag, csrfToken: req.csrfToken() });
 //     }));
-router.post("/search", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
-    const post = req.get("Post");
-    const { q } = req.body;
-    const post = await db.ManyTag.findAll({
-        where: { id: req.params.id }
-        include: postId
-    }
-    if (post === null) {
-        res.redirect()
-    }
-});
+// router.post("/search", requireAuth, csrfProtection, asyncHandler(async (req, res, next) => {
+//     const post = req.get("Post");
+//     const { q } = req.body;
+//     const post = await db.ManyTag.findAll({
+//         where: { id: req.params.id },
+//         include: postId
+//     }
+//     if (post === null) {
+//         res.redirect()
+//     }
+// });
