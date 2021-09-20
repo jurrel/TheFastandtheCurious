@@ -18,8 +18,8 @@ block content
                     li(class='post-tips') - Make sure your question has not been asked already
                     li(class='post-tips') - Keep your question short and to the point
                     li(class='post-tips') - Double-check grammar and spelling
-            input(type='text' name='title' value=title class='post-input' placeholder='Add a title to your post..')
-            textarea(type='textarea' name='description' value=description class='post-input-description' placeholder='Write about your post..' )
+            input(type='text' name='title' required=true value=title class='post-input' placeholder='Add a title to your post..')
+            textarea(type='textarea' required=true name='description' value=description class='post-input-description' placeholder='Write about your post..' )
             input(type='img' name='image' value=image class='post-input' placeholder='image file url')
             div(class='post-buttons-container')
               a(href='/' class='post-cancel post-buttons') Cancel
