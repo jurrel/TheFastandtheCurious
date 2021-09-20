@@ -11,7 +11,6 @@
     width: 150px;
     display: flex;
     justify-items: center;
-
 }
 
 .login-container {
@@ -32,7 +31,8 @@
 }
 
 label {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
 }
 
 .logo-container {
@@ -99,7 +99,16 @@ label {
     padding: 5px;
     width: 100px;
     border-radius: 20px;
+    border: none;
+    background-color: inherit;
 }
+
+.form-button:hover {
+    background-color: lightblue;
+    border: 1px solid rgb(204, 212, 204);
+}
+
+
 
 .forgot-password {
     padding: 20px;
@@ -118,6 +127,7 @@ label {
     border-bottom: 1px solid lightgray;
     margin-bottom: 20px;
     font-size: 25px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .errors {
@@ -163,8 +173,14 @@ label {
 }
 
 .demo-button {
-    /* margin: 50px; */
+
     position: relative;
     top: -45px;
     left: 10px;
+}
+
+
+button:hover {
+    cursor: pointer;
+
 }
