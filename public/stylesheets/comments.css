@@ -45,3 +45,15 @@
     width: 400px;
     content: url(../assets/ricky-bobby.png);
 }
+
+.user-comment {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+}
+
+.user-comment-container {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}

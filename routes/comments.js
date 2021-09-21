@@ -7,6 +7,7 @@ const { requireAuth } = require('../auth');
 
 
 router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, res, next) => {
+    const user = await db.User.findByPk(res.locals.user.id)
     const postId = parseInt(req.params.id, 10);
     const post = await db.Post.findByPk(postId);
     const comments = await db.Comment.findAll({where: {postId}});
@@ -14,9 +15,8 @@ router.get('/:id(\\d+)', csrfProtection, requireAuth, asyncHandler(async (req, r
     const users = await db.User.findAll();
 
     const postIdentity = parseInt(req.params.id, 10);
-    console.log(postIdentity)
 
-    res.render('comments', { post, users, comments, comm })
+    res.render('comments', { post, users, comments, comm, user })
 }))
 
 const commentValidators = [

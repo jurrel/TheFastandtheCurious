@@ -17,10 +17,11 @@ block content
       div(class='login-header')
         div(class='login-text')
       form(action=`/comments/${post.id}` method='post' class="comment-form")
-        input(type='text' name="description" value=description class='comment-input' placeholder='Drop a comment yo' required)
-        button(type='submit' class='submit-button') Comment
-      p
-      div(class='post-comments') Comments
+        div(class='user-comment-container')
+          img(class='user-comment' src=user.image)
+          input(type='text' name="description" value=description class='comment-input' placeholder='Add a comment...' required)
+          button(type='submit' class='submit-button') Add Comment
+      div(class='post-comments')
         p
           if comments
             each comment in comments
