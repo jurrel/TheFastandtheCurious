@@ -10,7 +10,7 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 1.5fr 10fr;
+    grid-template-columns: 1.5fr 8fr 1.5fr;
 }
 
 .tags-container {
