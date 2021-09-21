@@ -3,6 +3,21 @@
     border: 1px solid black
 }
 
+.post-title-contain {
+    width: 1000px;
+}
+
+.post-title {
+    padding: 20px;
+    font-weight: bolder;
+    text-align: left;
+}
+
+.post-description {
+    padding: 20px;
+    width: 1000px;
+}
+
 .commenter-comment {
     border: 1px solid black
 }
@@ -10,11 +25,23 @@
 .commenter-username {}
 
 .post-image-file {
-    width: 800px;
+    width: 100%;
+    height: auto;
+}
 
+.post-comments {
+    padding-left: 20px;
 }
 
 .post-container {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
+    width: 1020px;
+    box-shadow: 3px 3px 10px black;
+}
 
+.will-ferrell-pic {
+    width: 400px;
+    content: url(../assets/ricky-bobby.png);
 }

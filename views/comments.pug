@@ -12,7 +12,7 @@ block content
       div(class='post-title-contain')
         div(class='post-title')= post.title
       div(class='post-description post-poster')= post.description
-      div(class='post-image post-image-poster')
+      div(class='post-image')
         img(src=post.image class='post-image-file')
       div(class='login-header')
         div(class='login-text')
@@ -33,6 +33,6 @@ block content
                     img(class='commenter-img' src= user.image)
               div(class='commenter-comment')= comment.description
             else
-              div(class='will-ferrell-div') Be the first to comment
-                div Don't Forget...
-                  img(src='http://static1.squarespace.com/static/5ab91fd531d4df41e9024e59/t/5ac7b58a0e2e72739859ec2a/1523037587974/ricky-bobby.png?format=1500w' class='will-ferrell-pic')
+              div(class='post-comments') Be the first to comment
+                div(class='post-comments') Don't Forget...
+                  img(class='will-ferrell-pic')
