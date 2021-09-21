@@ -3,6 +3,7 @@ append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/comments.css")
   link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&family=Raleway:wght@300&display=swap" rel="stylesheet")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 include utils
@@ -21,6 +22,7 @@ block content
           img(class='user-comment' src=user.image)
           input(type='text' name="description" value=description class='comment-input' placeholder='Add a comment...' required)
           button(type='submit' class='submit-button') Add Comment
+          button(type='submit' class='submit-button' ) cancel
       div(class='post-comments')
         p
           if comments
@@ -33,6 +35,7 @@ block content
                     div(class='commenter-container')
                       img(class='commenter-img' src= user.image)
                       div(class='commenter-username')= user.userName
+                      //- div(class='commenter-username')= comment.updatedAt
               div(class='commenter-comment')= comment.description
             else
               div(class='post-comments') Be the first to comment

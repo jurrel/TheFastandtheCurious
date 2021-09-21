@@ -13,12 +13,6 @@
     width: 800px;
 }
 
-.commenter-comment {
-    border: 1px solid black
-}
-
-.commenter-username {}
-
 .post-image-file {
     width: 100%;
     height: auto;
@@ -26,6 +20,7 @@
 
 .post-comments {
     padding-left: 20px;
+    border-top: 1px solid rgb(196, 197, 200);
 }
 
 .post-container {
@@ -81,6 +76,16 @@
     width: 35px;
     height: 35px;
     border-radius: 35px;
-
     border: 1px solid rgb(188, 194, 228)
+}
+
+.commenter-comment {
+    padding: 10px 55px;
+    width: 97%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.commenter-username {
+    padding-left: 20px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
