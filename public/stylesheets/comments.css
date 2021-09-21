@@ -1,10 +1,5 @@
-.commenter-img {
-    width: 100px;
-    border: 1px solid black
-}
-
 .post-title-contain {
-    width: 1000px;
+    width: 800px;
 }
 
 .post-title {
@@ -15,7 +10,7 @@
 
 .post-description {
     padding: 20px;
-    width: 1000px;
+    width: 800px;
 }
 
 .commenter-comment {
@@ -37,7 +32,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 1020px;
+    width: 800px;
     box-shadow: 3px 3px 10px black;
 }
 
@@ -50,10 +45,42 @@
     width: 35px;
     height: 35px;
     border-radius: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid rgb(214, 214, 235);
 }
 
 .user-comment-container {
     display: flex;
     align-items: center;
     padding: 5px;
+}
+
+.comment-input {
+    padding: 5px;
+    width: 100%;
+    height: 35px;
+    border-radius: 35px;
+    outline: none;
+}
+
+.submit-button {
+    width: 150px;
+    background-color: rgb(26, 26, 255);
+    color: white;
+    border-radius: 35px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+.commenter-container {
+    display: flex;
+}
+
+.commenter-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+
+    border: 1px solid rgb(188, 194, 228)
 }

@@ -30,8 +30,9 @@ block content
               div
                 each user in users
                   if user.id === comment.userId
-                    div(class='commenter-username')= user.userName
-                    img(class='commenter-img' src= user.image)
+                    div(class='commenter-container')
+                      img(class='commenter-img' src= user.image)
+                      div(class='commenter-username')= user.userName
               div(class='commenter-comment')= comment.description
             else
               div(class='post-comments') Be the first to comment
