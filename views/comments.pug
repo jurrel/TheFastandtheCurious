@@ -22,7 +22,7 @@ block content
           img(class='user-comment' src=user.image)
           input(type='text' name="description" value=description class='comment-input' placeholder='Add a comment...' required)
           button(type='submit' class='submit-button') Add Comment
-          button(type='submit' class='submit-button' ) cancel
+          a(href='/' class='cancel-a') cancel
       div(class='post-comments')
         p
           if comments
@@ -38,6 +38,6 @@ block content
                       //- div(class='commenter-username')= comment.updatedAt
               div(class='commenter-comment')= comment.description
             else
-              div(class='post-comments') Be the first to comment
+              div(class='post-comments') Be the first to comment!
                 div(class='post-comments') Don't Forget...
                   img(class='will-ferrell-pic')

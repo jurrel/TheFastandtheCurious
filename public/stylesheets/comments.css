@@ -20,7 +20,7 @@
 
 .post-comments {
     padding-left: 20px;
-    border-top: 1px solid rgb(196, 197, 200);
+    margin-bottom: 15px;
 }
 
 .post-container {
@@ -34,6 +34,8 @@
 .will-ferrell-pic {
     width: 400px;
     content: url(../assets/ricky-bobby.png);
+    padding-top: 15px;
+    padding-left: 15px;
 }
 
 .user-comment {
@@ -49,6 +51,7 @@
     display: flex;
     align-items: center;
     padding: 5px;
+    border-bottom: 1px solid rgb(196, 197, 200);
 }
 
 .comment-input {
@@ -88,4 +91,13 @@
 .commenter-username {
     padding-left: 20px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.cancel-a {
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+button:hover {
+    cursor: pointer;
 }
