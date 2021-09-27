@@ -3,11 +3,10 @@ html
   head
       block head
         title="Express Starter App"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet" href="/stylesheets/index.css")
         link(rel="preconnect" href="https://fonts.googleapis.com")
   body(class='body')
-    div(class="nav-bar")
+    header(class="nav-bar")
       a(href='/')
         img(class='nav-links' src='http://nebula.wsimg.com/ee34e8fb3647a9f4eb497b1ce917b72a?AccessKeyId=58A00DE0FAC61CAFB374&disposition=0&alloworigin=1')
       a(href="/" class='nav-links')
@@ -24,6 +23,11 @@ html
         img(class='nav-links' src='https://previews.123rf.com/images/glopphy/glopphy1602/glopphy160200010/52091227-earth-icon-logo-vector-image-globe-illustration.jpg' )
       form(method='get' action='/posts/create')
         button(href='/posts/create', class='question-button') Summon Guru
-    div(class='index-body')
-    script(src='/javascripts/searchbar.js')
     block content
+    footer(class='footer-bar')
+      div(class='info-container')
+        div(class='my-info')
+          p all rights reserved
+          a(href='https://www.linkedin.com/in/pchand1216')
+            p hi
+          div(class='my-separate-info')
