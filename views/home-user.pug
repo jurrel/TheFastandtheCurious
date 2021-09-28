@@ -14,5 +14,6 @@ block content
         img(src= user.image class='profile-img')
         label(class='label-text') Edit Personal Tag
         form(action=`/users/update/${user.id}` method='post')
-          input(type='text' class='profile-basic user-tag' name='tag' value=user.tag)
+          //- input(type='text' class='profile-basic user-tag' name='tag' value=user.tag)
+          input(type='text' class='profile-basic user-tag' name='image' value=user.image)
           button(type='submit') update

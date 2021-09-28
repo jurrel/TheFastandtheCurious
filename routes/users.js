@@ -28,10 +28,13 @@ router.post('/update/:id(\\d+)', asyncHandler(async (req, res) => {
   const userId = parseInt(req.params.id, 10);
   const userUpdate = await db.User.findByPk(userId);
 
-  const { tag } = req.body
+  // const { tag } = req.body
+  const { image } = req.body
 
-  const thisTag = {tag}
-  await userUpdate.update(thisTag)
+  // const thisTag = {tag}
+  const thisImage = {image}
+
+  await userUpdate.update(thisImage)
 
   res.redirect('/');
 
