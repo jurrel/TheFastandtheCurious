@@ -3,8 +3,9 @@
 }
 
 .profile-info-container {
-    display: block;
+
 }
+
 .profile-img {
     border-radius: 300px;
     width: 300px;
@@ -13,12 +14,16 @@
 .profile-layout {
     margin: 0 auto;
     display: flex;
+    position: relative;
+    top: 50px;
     justify-content: center;
     border: 2px solid lightgrey;
     background-color: rgba(220, 220, 180, .5);
     width: 500px;
-
+    padding: 20px;
+    border-radius: 10px;
 }
+
 .profile-basic {
     border: 1px solid black;
     border-radius: 10px;
@@ -39,4 +44,10 @@
 .label-text {
     font-weight: bolder;
     display: block;
+}
+
+.user-edit-container {
+    height: 700px;
+    background-image: url(../assets/wp2589208-sky-blue-background.png);
+    background-size: cover;
 }

@@ -108,3 +108,7 @@ h1 {
 .footer-bar {
 
 }
+
+button:hover {
+    cursor: pointer;
+}
