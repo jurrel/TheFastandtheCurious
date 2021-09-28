@@ -202,13 +202,10 @@ router.post('/login/demo', csrfProtection, asyncHandler(async (req, res) => {
   const username = 'SimonD123'
   // const user = await db.User.findOne({ where: { userName } });
   const user = await db.User.findByPk(1);
-  console.log(user.id)
-  
-  console.log('hello')
   loginUser(req, res, user);
   // console.log(req.session)
   return res.redirect('/');
-  
+
 }));
 
 
