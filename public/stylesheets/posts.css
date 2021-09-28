@@ -102,5 +102,9 @@
 }
 
 .this-back {
-    height: 600px;
+    background-image: url(../assets/maxresdefault.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
 }
