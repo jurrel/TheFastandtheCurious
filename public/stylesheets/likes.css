@@ -9,4 +9,10 @@
 
 .star-liked {
     padding: 10px 0;
+    height: 800px;
+    overflow-y: scroll;
+}
+
+body {
+    overflow-y: hidden;
 }
