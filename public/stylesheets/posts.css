@@ -108,3 +108,7 @@
     background-position: center;
     height: 700px;
 }
+
+.delete-butt {
+    background-color: red;
+}

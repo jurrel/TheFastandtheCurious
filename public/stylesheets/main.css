@@ -6,9 +6,10 @@
 }
 
 .post-container {
-    width: 100%;
+    /* width: 100%;
     display: block;
     margin: 10px 0;
+    background-image: url(../assets/comment.jpg); */
 }
 
 .main-container {
@@ -34,7 +35,6 @@
     display: flex;
     height: 40px;
     padding: 0 20px;
-
 }
 
 .post-image-poster {
@@ -60,7 +60,6 @@
     height: auto;
     font-family: 'B612', sans-serif;
     padding: 20px 20px 10px 20px;
-
 }
 
 .tags-tags {
@@ -108,7 +107,9 @@ h2 {
 }
 
 .post-container {
-    display: block;
+    /* display: block; */
+    background-image: url(../assets/comment.jpg);
+    width: cover;
 }
 
 
@@ -164,5 +165,4 @@ h2 {
     justify-items: left;
     margin: 10px;
     margin-top: 20px;
-
 }

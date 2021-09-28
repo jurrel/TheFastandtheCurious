@@ -1,11 +1,13 @@
+extends layout
 append head
+block content
     link(rel='stylesheet' href='/stylesheets/edit-post.css')
     div(class='edit-container')
         form(action=`/posts/edit/${post.id}` method='post' class='posts-form')
             input(type='hidden' name='_csrf' value=csrfToken)
-            div(class='post-buttons-container form-group')
-                img(type='img' name='image' src=post.image class='post-input form-group' placeholder='image file url')
-            select(name='tagList' required class='select-input form-group')
+            div(class='post-image-container')
+                img(type='img' name='image' src=post.image class='post-image' placeholder='image file url')
+            select(name='tagList' required class='select-input form-group pointer')
                 each tag in tagList
                     option(value=tag.id)= tag.name
             div(class='form-group__container')
@@ -14,3 +16,5 @@ append head
                 input(type='text' name='description' value=post.description  class='post-input-description' placeholder='Edit your description')
             button(href='/' class='post-cancel post-buttons') Cancel
             button('/', class='post-buttons post-post') Post
+            form(class='delete-post delete-butt' action=`posts/delete/${post.id}` method='post')
+                button(class='post-buttons' role='button') delete
