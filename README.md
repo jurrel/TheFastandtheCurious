@@ -4,7 +4,7 @@ Faux Quora Clone dealing with anything fast enough to do something stupid in.
 
 *By: Paul Chang. --  [TheFastandtheCurious](https://thefastandthecurious.herokuapp.com/ "Named link title")*
 
-[TheFastandtheCurious](https://thefastandthecurious.herokuapp.com/ "Named link title") is a [Quora](https://quora.com/ "Named link title") clone with a theme of the cartoon *[Adventure Time](https://en.wikipedia.org/wiki/Adventure_Time "Named link title")*. It is a platform where users can search and purchase tickets to exciting events across the nation or create their own event within their own community. [Adventrure_Time](https://adventure--time.herokuapp.com/ "Named link title") is a fullstack React Redux application with a Python backend incorporating FLask & SQL-Alchemy with a PostgresSQL database system and Heroku to host. 
+[TheFastandtheCurious](https://thefastandthecurious.herokuapp.com/ "Named link title") is a [Quora](https://quora.com/ "Named link title") clone with a theme of fast vehicles, crazy adventures and a little attitude. [TheFastandtheCurious](https://thefastandthecurious.herokuapp.com/ "Named link title") uses Node Express  in a JavaScript framework integrated with a SQL database. Frontend is rendered through pug templates and pure CSS manipulations.
 
 ### Table of Contents:
  - [Application Features](#application-features)
@@ -42,6 +42,11 @@ Faux Quora Clone dealing with anything fast enough to do something stupid in.
 *Users may edit their tagline.*
 ![Screen Shot 2021-09-28 at 12 43 27 AM](https://user-images.githubusercontent.com/79543569/135024714-c815d653-4367-4f0d-8c7b-c29a991c2eb8.png)
 
+## Code Insight
+*Creating a post.*
+<img width="865" alt="Screen Shot 2021-09-28 at 12 57 08 AM" src="https://user-images.githubusercontent.com/79543569/135025882-c527ba6d-2a88-4499-99c0-9123784d43bf.png">
+
+
 
 # Installation
 
@@ -71,6 +76,7 @@ Faux Quora Clone dealing with anything fast enough to do something stupid in.
 # Technologies used
 - Express
 - Javascript
+- Node
 - Pug
 - Bcrypt
 - Morgan
@@ -106,4 +112,4 @@ Faux Quora Clone dealing with anything fast enough to do something stupid in.
 [3]: https://www.linkedin.com/in/pchang1216/
 
 
-Visit the live app powered by Heroku [here](https://adventure--time.herokuapp.com/ "Named link title")
+Visit the live app powered by Heroku [here](https://thefastandthecurious.herokuapp.com/ "Named link title")
