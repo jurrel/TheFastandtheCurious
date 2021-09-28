@@ -1,16 +1,18 @@
 .footer-bar {
     background-color: rgba(0, 0, 0, 0.089);
-    height: 300px;
+    height: 100px;
 }
 
-.info-container {
-
-}
+.info-container {}
 
 .my-info {
-
+    padding: 20px;
+    display: flex;
+    margin-left: 10px;
 }
 
-.my-sparate-info {
+.my-sparate-info {}
 
+.footer-links  {
+    padding-left: 20px;
 }
