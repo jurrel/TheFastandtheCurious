@@ -1,7 +1,8 @@
 .footer-bar {
     background-color: rgb(243, 243, 243);
     height: 75px;
-    box-shadow: 3px 3px 30px rgb(195, 180, 180);
+    box-shadow: 3px 3px 10px rgb(195, 180, 180);
+    /* border-top: 1px solid rgb(218, 212, 212); */
     position: fixed;
     z-index: 1000;
     bottom: 0;
