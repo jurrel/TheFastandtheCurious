@@ -31,6 +31,7 @@
 
 .footer-type:hover {
     color: blue;
+    border-bottom: 2px solid blue;
 }
 
 .site-info {
