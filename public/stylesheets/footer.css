@@ -1,6 +1,10 @@
 .footer-bar {
     background-color: rgba(70, 66, 66, 0.089);
     height: 75px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .info-container {}
