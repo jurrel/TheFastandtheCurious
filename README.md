@@ -101,15 +101,25 @@ Faux Quora Clone dealing with anything fast enough to do something stupid in.
 
 
 # Contact
+Paul
 [![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)][1]
 [![angellist](https://github.com/hull/hullstrap/blob/master/source/images/icons/angellist.svg)][2]
 [![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)][3]
 
-[joonyc88@gmail.com](mailto:joonyc88@gmail.com)
 
+Paul
 [1]: https://github.com/88joonyc
 [2]: https://angel.co/u/paul-chang-27
 [3]: https://www.linkedin.com/in/pchang1216/
+
+Gerryl
+[1]: https://github.com/jurrel
+
+John Borja
+[1]: https://github.com/jborja-one
+
+Colin Goswell
+[1]: https://github.com/colingoswell
 
 
 Visit the live app powered by Heroku [here](https://thefastandthecurious.herokuapp.com/ "Named link title")
