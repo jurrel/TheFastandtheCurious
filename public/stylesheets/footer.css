@@ -12,7 +12,7 @@
 
 .info-container {}
 
-.my-info {
+.group-info {
     padding: 10px;
     display: flex;
     margin-left: 10px;
@@ -31,4 +31,8 @@
 
 .footer-type:hover {
     color: blue;
+}
+
+.site-info {
+    background-color: black;
 }
