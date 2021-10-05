@@ -23,7 +23,7 @@
 }
 
 .tags-container {
-    width: 80%;
+    width: 100%;
 }
 
 .post-grid-container {
@@ -79,10 +79,12 @@
     text-decoration: none;
     padding: 12px;
     font-size: 13.5px;
+    /* width: 200px; */
 }
 
 .tags-links:hover {
     background-color: rgba(255, 0, 0, 0.1);
+    /* cursor: pointer; */
 }
 
 h2 {
