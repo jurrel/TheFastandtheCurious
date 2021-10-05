@@ -23,8 +23,9 @@ block content
         div(class='post-container')
           div(class='post-grid-container')
             div(class='post-user-container')
-              form(class='delete-post' action=`posts/delete/${post.id}` method='post')
-                button(class='delete-this-post' role='button') X
+              if post.userId === user.id
+                form(class='delete-post' action=`posts/delete/${post.id}` method='post')
+                  button(class='delete-this-post' role='button') X
               each user in users
                 if user.id === post.userId
                   div(class='users-contained')
@@ -42,8 +43,9 @@ block content
             div(class='buttons-for-posts')
               a(type='button' href=`comments/${post.id}`)
                 img(class='like-button' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgRqp-cHJ8h1-nwjnqa3BahRWMKNss_0ARckb7uuc1SY9fi9TdN25JsN1kl22P5hjuNpI&usqp=CAU")
-              a(type='button' href=`/posts/edit/${post.id}`)
-                img(class='like-button' src="https://www.pngitem.com/pimgs/m/114-1146547_new-post-new-post-icon-svg-hd-png.png")
+              if post.userId === user.id
+                a(type='button' href=`/posts/edit/${post.id}`)
+                  img(class='like-button' src="https://www.pngitem.com/pimgs/m/114-1146547_new-post-new-post-icon-svg-hd-png.png")
             div(class='like-hate')
               form(action=`/posts/hate/${post.id}` method="post")
                 button(type='submit' class='hate-me-button like-button like' id='hate') 👎
